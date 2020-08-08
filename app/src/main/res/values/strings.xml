@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Easy Interest</string>
+    <string name="startCapital">Capital initial</string>
+    <string name="savings">Epargne</string>
+    <string name="monthly">Mensuelle</string>
+    <string name="yearly">Annuelle</string>
+    <string name="annualGrowth">Croissance annuelle %</string>
+    <string name="nbOfYears">Nombre d\'années</string>
+    <string name="finalCapital">Capital final</string>
+</resources>

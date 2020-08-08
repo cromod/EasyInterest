@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/labelStartCapital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/startCapital"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <EditText
+        android:id="@+id/editStartCapital"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/labelStartCapital"
+        android:text=""
+        android:inputType="numberDecimal"
+        />
+
+    <TextView
+        android:id="@+id/labelSavings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editStartCapital"
+        android:text="@string/savings"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <Switch
+        android:id="@+id/switchFrequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/labelSavings"
+        android:onClick="onChangeFrequency"
+        />
+
+    <TextView
+        android:id="@+id/labelFrequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/labelSavings"
+        android:layout_toRightOf="@id/switchFrequency"
+        android:text="@string/monthly"
+        />
+
+    <EditText
+        android:id="@+id/editSavings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/switchFrequency"
+        android:text=""
+        android:inputType="numberDecimal"
+        />
+
+    <TextView
+        android:id="@+id/labelAnnualGrowth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editSavings"
+        android:text="@string/annualGrowth"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <EditText
+        android:id="@+id/editAnnualGrowth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/labelAnnualGrowth"
+        android:text=""
+        android:inputType="numberDecimal"
+        />
+
+    <TextView
+        android:id="@+id/labelNbOfYears"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editAnnualGrowth"
+        android:text="@string/nbOfYears"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <EditText
+        android:id="@+id/editNbOfYears"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/labelNbOfYears"
+        android:text=""
+        android:inputType="number"
+        />
+
+    <TextView
+        android:id="@+id/labelfinalCapital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editNbOfYears"
+        android:text="@string/finalCapital"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <TextView
+        android:id="@+id/resultfinalCapital"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/labelfinalCapital"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+</RelativeLayout>
