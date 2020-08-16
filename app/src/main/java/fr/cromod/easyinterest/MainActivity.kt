@@ -1,73 +1,78 @@
 package fr.cromod.easyinterest
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.view.View
-import android.widget.EditText
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.math.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 
-class MainActivity(var inputs: MutableMap<EditText, String> = mutableMapOf(), var result: Float = 0F)
-    : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    private fun loadFragment(fragmentId: Int)
+    {
+        val fragment = supportFragmentManager.findFragmentById(fragmentId) ?: return
 
-        inputs[editStartCapital] = editStartCapital.text.toString()
-        inputs[editAnnualGrowth] = editAnnualGrowth.text.toString()
-        inputs[editNbOfYears] = editNbOfYears.text.toString()
-        inputs[editSavings] = editSavings.text.toString()
-
-        listenTextChanged(editStartCapital)
-        listenTextChanged(editAnnualGrowth)
-        listenTextChanged(editNbOfYears)
-        listenTextChanged(editSavings)
-    }
-
-    private fun listenTextChanged(editText: EditText) {
-        editText.addTextChangedListener(object : TextWatcher {
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                inputs[editText] = s.toString()
-                calculateFinalCapital(
-                    startCapital = if(inputs[editStartCapital]!!.isEmpty()) 0F else inputs[editStartCapital]!!.toFloat(),
-                    growth = if(inputs[editAnnualGrowth]!!.isEmpty()) 0F else inputs[editAnnualGrowth]!!.toFloat(),
-                    nbOfYears = if(inputs[editNbOfYears]!!.isEmpty()) 0 else inputs[editNbOfYears]!!.toInt(),
-                    savings = if(inputs[editSavings]!!.isEmpty()) 0F else inputs[editSavings]!!.toFloat(),
-                    monthly = !switchFrequency.isChecked
-                )
-                resultfinalCapital.setText(result.toString())
-            }
-            override fun afterTextChanged(arg0: Editable) {}
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-        })
-    }
-
-    fun onChangeFrequency(view: View) {
-        // Update result
-        calculateFinalCapital(
-            startCapital = if(editStartCapital.text.isEmpty()) 0F else editStartCapital.text.toString().toFloat(),
-            growth = if(editAnnualGrowth.text.isEmpty()) 0F else editAnnualGrowth.text.toString().toFloat(),
-            nbOfYears = if(editNbOfYears.text.isEmpty()) 0 else editNbOfYears.text.toString().toInt(),
-            savings = if(editSavings.text.isEmpty()) 0F else editSavings.text.toString().toFloat(),
-            monthly = !switchFrequency.isChecked
-        )
-        resultfinalCapital.setText(result.toString())
-
-        // Update label
-        labelFrequency.setText(if(switchFrequency.isChecked) R.string.yearly else R.string.monthly)
-    }
-
-    fun calculateFinalCapital( startCapital: Float, growth: Float, nbOfYears: Int,
-                               savings: Float, monthly: Boolean) {
-        val factor: Float = 1 + growth / 100
-        val period: Float = if(monthly) 12F else 1F
-        result = startCapital*(factor.pow(nbOfYears))
-        for (i in 1..nbOfYears) {
-            result += period*savings*factor.pow(i-1)
+        if (!fragment.isVisible)
+        {
+            supportFragmentManager.beginTransaction().replace(fragmentId, fragment).commit()
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
+
+        val fab: FloatingActionButton = findViewById(R.id.fab)
+        fab.setOnClickListener { view ->
+            Snackbar.make(view, "TO DEFINE", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
+        }
+
+        val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar,
+            R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawer_layout.addDrawerListener(toggle)
+        toggle.syncState()
+        nav_view.setNavigationItemSelectedListener(this)
+    }
+
+    override fun onBackPressed()
+    {
+        if (drawer_layout.isDrawerOpen(GravityCompat.START))
+        {
+            drawer_layout.closeDrawer(GravityCompat.START)
+        }
+        else
+        {
+            super.onBackPressed()
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.action_settings -> return true
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.compound_interest -> loadFragment(R.id.compound_interest)
+        }
+        drawer_layout.closeDrawer(GravityCompat.START)
+        return true
+    }
 }

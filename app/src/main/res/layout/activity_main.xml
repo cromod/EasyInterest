@@ -1,144 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.cromod.easyinterest.MainActivity">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <TextView
-        android:id="@+id/labelStartCapital"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/startCapital"
-        android:textAppearance="?android:textAppearanceLarge"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
-
-    <EditText
-        android:id="@+id/editStartCapital"
+    <include
+        layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text=""
-        android:inputType="numberDecimal"
-        app:layout_constraintTop_toBottomOf="@id/labelStartCapital"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
+        android:layout_height="match_parent" />
 
-    <TextView
-        android:id="@+id/labelSavings"
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/savings"
-        android:textAppearance="?android:textAppearanceLarge"
-        app:layout_constraintTop_toBottomOf="@id/editStartCapital"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
 
-    <Switch
-        android:id="@+id/switchFrequency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onChangeFrequency"
-        app:layout_constraintTop_toBottomOf="@id/labelSavings"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/labelFrequency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/monthly"
-        app:layout_constraintTop_toBottomOf="@id/switchFrequency"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
-
-    <EditText
-        android:id="@+id/editSavings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text=""
-        android:inputType="numberDecimal"
-        app:layout_constraintTop_toBottomOf="@id/labelFrequency"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/labelAnnualGrowth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/annualGrowth"
-        android:textAppearance="?android:textAppearanceLarge"
-        app:layout_constraintTop_toBottomOf="@id/editSavings"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
-
-    <EditText
-        android:id="@+id/editAnnualGrowth"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text=""
-        android:inputType="numberDecimal"
-        app:layout_constraintTop_toBottomOf="@id/labelAnnualGrowth"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/labelNbOfYears"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nbOfYears"
-        android:textAppearance="?android:textAppearanceLarge"
-        app:layout_constraintTop_toBottomOf="@id/editAnnualGrowth"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
-
-    <EditText
-        android:id="@+id/editNbOfYears"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text=""
-        android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@id/labelNbOfYears"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/labelfinalCapital"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/finalCapital"
-        android:textAppearance="?android:textAppearanceLarge"
-        app:layout_constraintTop_toBottomOf="@id/editNbOfYears"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/resultfinalCapital"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textAppearance="?android:textAppearanceLarge"
-        app:layout_constraintTop_toBottomOf="@id/labelfinalCapital"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
