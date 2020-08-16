@@ -1,4 +1,4 @@
-package com.example.easyinterest
+package fr.cromod.easyinterest
 
 import org.junit.Test
 

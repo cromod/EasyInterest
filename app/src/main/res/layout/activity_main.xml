@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="fr.cromod.easyinterest.MainActivity">
 
     <TextView
         android:id="@+id/labelStartCapital"
@@ -13,102 +13,132 @@
         android:layout_height="wrap_content"
         android:text="@string/startCapital"
         android:textAppearance="?android:textAppearanceLarge"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         />
 
     <EditText
         android:id="@+id/editStartCapital"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelStartCapital"
+        android:gravity="center"
         android:text=""
         android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@id/labelStartCapital"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         />
 
     <TextView
         android:id="@+id/labelSavings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editStartCapital"
         android:text="@string/savings"
         android:textAppearance="?android:textAppearanceLarge"
+        app:layout_constraintTop_toBottomOf="@id/editStartCapital"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         />
 
     <Switch
         android:id="@+id/switchFrequency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelSavings"
         android:onClick="onChangeFrequency"
+        app:layout_constraintTop_toBottomOf="@id/labelSavings"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         />
 
     <TextView
         android:id="@+id/labelFrequency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelSavings"
-        android:layout_toRightOf="@id/switchFrequency"
         android:text="@string/monthly"
+        app:layout_constraintTop_toBottomOf="@id/switchFrequency"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         />
 
     <EditText
         android:id="@+id/editSavings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/switchFrequency"
+        android:gravity="center"
         android:text=""
         android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@id/labelFrequency"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         />
 
     <TextView
         android:id="@+id/labelAnnualGrowth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editSavings"
         android:text="@string/annualGrowth"
         android:textAppearance="?android:textAppearanceLarge"
+        app:layout_constraintTop_toBottomOf="@id/editSavings"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         />
 
     <EditText
         android:id="@+id/editAnnualGrowth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelAnnualGrowth"
+        android:gravity="center"
         android:text=""
         android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@id/labelAnnualGrowth"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         />
 
     <TextView
         android:id="@+id/labelNbOfYears"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editAnnualGrowth"
         android:text="@string/nbOfYears"
         android:textAppearance="?android:textAppearanceLarge"
+        app:layout_constraintTop_toBottomOf="@id/editAnnualGrowth"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         />
 
     <EditText
         android:id="@+id/editNbOfYears"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelNbOfYears"
+        android:gravity="center"
         android:text=""
         android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/labelNbOfYears"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         />
 
     <TextView
         android:id="@+id/labelfinalCapital"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editNbOfYears"
         android:text="@string/finalCapital"
         android:textAppearance="?android:textAppearanceLarge"
+        app:layout_constraintTop_toBottomOf="@id/editNbOfYears"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         />
 
     <TextView
         android:id="@+id/resultfinalCapital"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelfinalCapital"
+        android:gravity="center"
         android:textAppearance="?android:textAppearanceLarge"
+        app:layout_constraintTop_toBottomOf="@id/labelfinalCapital"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         />
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
