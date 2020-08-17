@@ -6,21 +6,23 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private fun loadFragment(fragmentId: Int)
+    private fun loadFragment(fragment: Fragment?)
     {
-        val fragment = supportFragmentManager.findFragmentById(fragmentId) ?: return
+        if (fragment == null) return
 
         if (!fragment.isVisible)
         {
-            supportFragmentManager.beginTransaction().replace(fragmentId, fragment).commit()
+            supportFragmentManager.beginTransaction().replace(fragment_to_display.id, fragment).commit()
         }
     }
 
@@ -70,7 +72,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.compound_interest -> loadFragment(R.id.compound_interest)
+            R.id.compound_interest -> loadFragment(CompoundInterestFragment.newInstance())
         }
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
