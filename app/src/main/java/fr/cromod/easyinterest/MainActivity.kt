@@ -16,12 +16,13 @@ import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private fun loadFragment(fragment: Fragment?)
+    private fun loadFragment(fragment: Fragment?, title: String)
     {
         if (fragment == null) return
 
         if (!fragment.isVisible)
         {
+            setTitle(title)
             supportFragmentManager.beginTransaction().replace(fragment_to_display.id, fragment).commit()
         }
     }
@@ -29,7 +30,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
+        loadFragment(CompoundInterestFragment.newInstance(), getString(R.string.compound_interest))
+
         setSupportActionBar(toolbar)
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
@@ -72,7 +76,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.compound_interest -> loadFragment(CompoundInterestFragment.newInstance())
+            R.id.compound_interest -> loadFragment(CompoundInterestFragment.newInstance(), getString(R.string.compound_interest))
         }
         drawer_layout.closeDrawer(GravityCompat.START)
         return true

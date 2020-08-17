@@ -8,105 +8,117 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/labelStartCapital"
+        android:id="@+id/label_start_capital"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:text="@string/start_capital"
         android:textAppearance="?android:textAppearanceLarge"
         />
 
     <EditText
-        android:id="@+id/editStartCapital"
+        android:id="@+id/edit_start_capital"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelStartCapital"
+        android:gravity="center"
+        android:layout_below="@id/label_start_capital"
         android:text=""
         android:inputType="numberDecimal"
         />
 
     <TextView
-        android:id="@+id/labelSavings"
+        android:id="@+id/label_savings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editStartCapital"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/edit_start_capital"
         android:text="@string/savings"
         android:textAppearance="?android:textAppearanceLarge"
         />
 
     <Switch
-        android:id="@+id/switchFrequency"
+        android:id="@+id/switch_frequency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelSavings"/>
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/label_savings"/>
 
     <TextView
-        android:id="@+id/labelFrequency"
+        android:id="@+id/label_frequency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelSavings"
-        android:layout_toRightOf="@id/switchFrequency"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/switch_frequency"
         android:text="@string/monthly"
         />
 
     <EditText
-        android:id="@+id/editSavings"
+        android:id="@+id/edit_savings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/switchFrequency"
+        android:gravity="center"
+        android:layout_below="@id/label_frequency"
         android:text=""
         android:inputType="numberDecimal"
         />
 
     <TextView
-        android:id="@+id/labelAnnualGrowth"
+        android:id="@+id/label_annual_growth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editSavings"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/edit_savings"
         android:text="@string/annual_growth"
         android:textAppearance="?android:textAppearanceLarge"
         />
 
     <EditText
-        android:id="@+id/editAnnualGrowth"
+        android:id="@+id/edit_annual_growth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelAnnualGrowth"
+        android:gravity="center"
+        android:layout_below="@id/label_annual_growth"
         android:text=""
         android:inputType="numberDecimal"
         />
 
     <TextView
-        android:id="@+id/labelNbOfYears"
+        android:id="@+id/label_nb_of_years"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editAnnualGrowth"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/edit_annual_growth"
         android:text="@string/nb_of_years"
         android:textAppearance="?android:textAppearanceLarge"
         />
 
     <EditText
-        android:id="@+id/editNbOfYears"
+        android:id="@+id/edit_nb_of_years"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelNbOfYears"
+        android:gravity="center"
+        android:layout_below="@id/label_nb_of_years"
         android:text=""
         android:inputType="number"
         />
 
     <TextView
-        android:id="@+id/labelfinalCapital"
+        android:id="@+id/label_final_capital"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editNbOfYears"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/edit_nb_of_years"
         android:text="@string/final_capital"
         android:textAppearance="?android:textAppearanceLarge"
         />
 
     <TextView
-        android:id="@+id/resultfinalCapital"
+        android:id="@+id/result_final_capital"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelfinalCapital"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@id/label_final_capital"
         android:textAppearance="?android:textAppearanceLarge"
         />
 </RelativeLayout>

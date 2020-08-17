@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.compound_interest.*
-import kotlin.math.pow
+import kotlin.math.*
 
 class CompoundInterestFragment() : Fragment() {
 
@@ -19,7 +19,30 @@ class CompoundInterestFragment() : Fragment() {
 
     companion object
     {
-        fun newInstance(): CompoundInterestFragment = CompoundInterestFragment()
+        private var instance: CompoundInterestFragment? = null
+
+        fun newInstance(): CompoundInterestFragment?
+        {
+            if (instance == null) instance = CompoundInterestFragment()
+            return instance
+        }
+
+        fun calculateFinalCapital( startCapital: Float, growth: Float, nbOfYears: Int,
+                                   savings: Float, monthly: Boolean): Float
+        {
+            // some constants to initialize
+            val factor: Float = 1 + growth / 100
+            val period: Float = if(monthly) 12F else 1F
+            // compound interests on start capital
+            var result: Float = startCapital*(factor.pow(nbOfYears))
+            // compound interests on savings
+            for (i in 1..nbOfYears) {
+                result += period*savings*factor.pow(i-1)
+            }
+            // round the result to 2 decimal places
+            result = round(result*100)/100
+            return result
+        }
     }
 
     override fun onAttach(context: Context)
@@ -41,10 +64,10 @@ class CompoundInterestFragment() : Fragment() {
     {
         super.onActivityCreated(savedInstanceState)
 
-        listenTextChanged(editStartCapital)
-        listenTextChanged(editAnnualGrowth)
-        listenTextChanged(editNbOfYears)
-        listenTextChanged(editSavings)
+        listenTextChanged(edit_start_capital)
+        listenTextChanged(edit_annual_growth)
+        listenTextChanged(edit_nb_of_years)
+        listenTextChanged(edit_savings)
 
         listenFrequencyChanged()
     }
@@ -55,14 +78,7 @@ class CompoundInterestFragment() : Fragment() {
         {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int)
             {
-                val result = calculateFinalCapital(
-                    startCapital = if(editStartCapital.text.isEmpty()) 0F else editStartCapital.text.toString().toFloat(),
-                    growth = if(editAnnualGrowth.text.isEmpty()) 0F else editAnnualGrowth.text.toString().toFloat(),
-                    nbOfYears = if(editNbOfYears.text.isEmpty()) 0 else editNbOfYears.text.toString().toInt(),
-                    savings = if(editSavings.text.isEmpty()) 0F else editSavings.text.toString().toFloat(),
-                    monthly = !switchFrequency.isChecked
-                )
-                resultfinalCapital.setText(result.toString())
+                updateResult()
             }
             override fun afterTextChanged(arg0: Editable) {}
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
@@ -71,32 +87,30 @@ class CompoundInterestFragment() : Fragment() {
 
     private fun listenFrequencyChanged()
     {
-        switchFrequency.setOnClickListener {
-            // Update result
-            val result = calculateFinalCapital(
-                startCapital = if(editStartCapital.text.isEmpty()) 0F else editStartCapital.text.toString().toFloat(),
-                growth = if(editAnnualGrowth.text.isEmpty()) 0F else editAnnualGrowth.text.toString().toFloat(),
-                nbOfYears = if(editNbOfYears.text.isEmpty()) 0 else editNbOfYears.text.toString().toInt(),
-                savings = if(editSavings.text.isEmpty()) 0F else editSavings.text.toString().toFloat(),
-                monthly = !switchFrequency.isChecked
-            )
-            resultfinalCapital.setText(result.toString())
-
-            // Update label
-            labelFrequency.setText(if(switchFrequency.isChecked) R.string.yearly else R.string.monthly)
+        switch_frequency.setOnClickListener {
+            updateResult()
+            label_frequency.setText(if(switch_frequency.isChecked) R.string.yearly else R.string.monthly)
         }
     }
 
-    fun calculateFinalCapital( startCapital: Float, growth: Float, nbOfYears: Int,
-                               savings: Float, monthly: Boolean): Float
+    private fun updateResult()
     {
-        val factor: Float = 1 + growth / 100
-        val period: Float = if(monthly) 12F else 1F
-        var result: Float = startCapital*(factor.pow(nbOfYears))
-        for (i in 1..nbOfYears) {
-            result += period*savings*factor.pow(i-1)
+        val result = calculateFinalCapital(
+            startCapital = if(edit_start_capital.text.isEmpty()) 0F else edit_start_capital.text.toString().toFloat(),
+            growth = if(edit_annual_growth.text.isEmpty()) 0F else edit_annual_growth.text.toString().toFloat(),
+            nbOfYears = if(edit_nb_of_years.text.isEmpty()) 0 else edit_nb_of_years.text.toString().toInt(),
+            savings = if(edit_savings.text.isEmpty()) 0F else edit_savings.text.toString().toFloat(),
+            monthly = !switch_frequency.isChecked
+        )
+
+        if (result.isFinite())
+        {
+            result_final_capital.setText(result.toBigDecimal().toPlainString())
         }
-        return result
+        else
+        {
+            result_final_capital.setText("")
+        }
     }
 
 }

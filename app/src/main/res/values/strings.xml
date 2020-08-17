@@ -7,7 +7,6 @@
     <string name="annual_growth">Croissance annuelle %</string>
     <string name="nb_of_years">Nombre d\'années</string>
     <string name="final_capital">Capital final</string>
-    <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_desc">Navigation header</string>
