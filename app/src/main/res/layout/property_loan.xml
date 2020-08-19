@@ -27,31 +27,11 @@
         />
 
     <TextView
-        android:id="@+id/label_loan_duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/edit_loan_amount"
-        android:text="@string/nb_of_years"
-        android:textAppearance="?android:textAppearanceLarge"
-        />
-
-    <EditText
-        android:id="@+id/edit_loan_duration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_below="@id/label_loan_duration"
-        android:text=""
-        android:inputType="number"
-        />
-
-    <TextView
         android:id="@+id/label_interest_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/edit_loan_duration"
+        android:layout_below="@id/edit_loan_amount"
         android:text="@string/interest_rate"
         android:textAppearance="?android:textAppearanceLarge"
         />
@@ -67,11 +47,31 @@
         />
 
     <TextView
-        android:id="@+id/label_monthly_payment"
+        android:id="@+id/label_loan_duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/edit_interest_rate"
+        android:text="@string/nb_of_years"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <EditText
+        android:id="@+id/edit_loan_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@id/label_loan_duration"
+        android:text=""
+        android:inputType="number"
+        />
+
+    <TextView
+        android:id="@+id/label_monthly_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/edit_loan_duration"
         android:text="@string/monthly_payment"
         android:textAppearance="?android:textAppearanceLarge"
         />
@@ -87,7 +87,7 @@
         />
 
     <TextView
-        android:id="@+id/label_credit_cost"
+        android:id="@+id/label_loan_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -97,12 +97,12 @@
         />
 
     <TextView
-        android:id="@+id/result_credit_cost"
+        android:id="@+id/result_loan_cost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_below="@id/label_credit_cost"
+        android:layout_below="@id/label_loan_cost"
         android:textAppearance="?android:textAppearanceLarge"
         />
 

@@ -95,7 +95,7 @@ class CompoundInterestFragment() : Fragment() {
 
     private fun updateResult()
     {
-        val result = calculateFinalCapital(
+        var result = calculateFinalCapital(
             startCapital = if(edit_start_capital.text.isEmpty()) 0F else edit_start_capital.text.toString().toFloat(),
             growth = if(edit_annual_growth.text.isEmpty()) 0F else edit_annual_growth.text.toString().toFloat(),
             nbOfYears = if(edit_nb_of_years.text.isEmpty()) 0 else edit_nb_of_years.text.toString().toInt(),
@@ -105,7 +105,8 @@ class CompoundInterestFragment() : Fragment() {
 
         if (result.isFinite())
         {
-            result_final_capital.setText(result.toBigDecimal().toPlainString())
+            result = round(result * 100) / 100
+            result_final_capital.setText(result.toString())
         }
         else
         {

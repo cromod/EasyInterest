@@ -6,7 +6,12 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/compound_interest"
-            android:icon="@drawable/ic_attach_money_black_24dp"
+            android:icon="@drawable/ic_money"
             android:title="@string/compound_interest" />
+
+        <item
+            android:id="@+id/property_loan"
+            android:icon="@drawable/ic_home"
+            android:title="@string/property_loan" />
     </group>
 </menu>

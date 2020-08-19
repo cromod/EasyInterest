@@ -16,4 +16,5 @@
     <string name="interest_rate">Taux d\'intérêt %</string>
     <string name="monthly_payment">Mensualités</string>
     <string name="credit_cost">Coût du crédit</string>
+    <string name="property_loan">Crédit immobilier</string>
 </resources>

@@ -77,6 +77,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.compound_interest -> loadFragment(CompoundInterestFragment.newInstance(), getString(R.string.compound_interest))
+            R.id.property_loan -> loadFragment(PropertyLoanFragment.newInstance(), getString(R.string.property_loan))
         }
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
