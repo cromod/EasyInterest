@@ -1,21 +1,14 @@
 package fr.cromod.easyinterest
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.compound_interest.*
-import kotlin.math.*
+import kotlin.math.pow
+import kotlin.math.round
 
-class CompoundInterestFragment() : Fragment() {
-
-    private lateinit var parentActivity: Activity
+class CompoundInterestFragment() : AbstractFragment() {
 
     companion object
     {
@@ -45,14 +38,6 @@ class CompoundInterestFragment() : Fragment() {
         }
     }
 
-    override fun onAttach(context: Context)
-    {
-        super.onAttach(context)
-        if (context is Activity) {
-            this.parentActivity = context
-        }
-    }
-
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View?
@@ -72,19 +57,6 @@ class CompoundInterestFragment() : Fragment() {
         listenFrequencyChanged()
     }
 
-    private fun listenTextChanged(editText: EditText)
-    {
-        editText.addTextChangedListener(object : TextWatcher
-        {
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int)
-            {
-                updateResult()
-            }
-            override fun afterTextChanged(arg0: Editable) {}
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-        })
-    }
-
     private fun listenFrequencyChanged()
     {
         switch_frequency.setOnClickListener {
@@ -93,7 +65,7 @@ class CompoundInterestFragment() : Fragment() {
         }
     }
 
-    private fun updateResult()
+    override fun updateResult()
     {
         var result = calculateFinalCapital(
             startCapital = if(edit_start_capital.text.isEmpty()) 0F else edit_start_capital.text.toString().toFloat(),
@@ -106,7 +78,7 @@ class CompoundInterestFragment() : Fragment() {
         if (result.isFinite())
         {
             result = round(result * 100) / 100
-            result_final_capital.setText(result.toString())
+            result_final_capital.setText(result.toBigDecimal().toPlainString())
         }
         else
         {

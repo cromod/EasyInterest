@@ -1,21 +1,14 @@
 package fr.cromod.easyinterest
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.property_loan.*
-import kotlin.math.*
+import kotlin.math.pow
+import kotlin.math.round
 
-class PropertyLoanFragment() : Fragment() {
-
-    private lateinit var parentActivity: Activity
+class PropertyLoanFragment() : AbstractFragment() {
 
     companion object
     {
@@ -40,14 +33,6 @@ class PropertyLoanFragment() : Fragment() {
         }
     }
 
-    override fun onAttach(context: Context)
-    {
-        super.onAttach(context)
-        if (context is Activity) {
-            this.parentActivity = context
-        }
-    }
-
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View?
@@ -64,20 +49,7 @@ class PropertyLoanFragment() : Fragment() {
         listenTextChanged(edit_interest_rate)
     }
 
-    private fun listenTextChanged(editText: EditText)
-    {
-        editText.addTextChangedListener(object : TextWatcher
-        {
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int)
-            {
-                updateResult()
-            }
-            override fun afterTextChanged(arg0: Editable) {}
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-        })
-    }
-
-    private fun updateResult()
+    override fun updateResult()
     {
         var monthlyPayment = calculateMonthlyPayment(
             loanAmount = if(edit_loan_amount.text.isEmpty()) 0F else edit_loan_amount.text.toString().toFloat(),
@@ -94,7 +66,7 @@ class PropertyLoanFragment() : Fragment() {
         if (monthlyPayment.isFinite())
         {
             monthlyPayment = round(monthlyPayment * 100) / 100
-            result_monthly_payment.setText(monthlyPayment.toString())
+            result_monthly_payment.setText(monthlyPayment.toBigDecimal().toPlainString())
         }
         else
         {
@@ -104,7 +76,7 @@ class PropertyLoanFragment() : Fragment() {
         if (loanCost.isFinite())
         {
             loanCost = round(loanCost * 100) / 100
-            result_loan_cost.setText(loanCost.toString())
+            result_loan_cost.setText(loanCost.toBigDecimal().toPlainString())
         }
         else
         {
