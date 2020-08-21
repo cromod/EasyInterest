@@ -78,11 +78,11 @@ class CompoundInterestFragment() : AbstractFragment() {
         if (result.isFinite())
         {
             result = round(result * 100) / 100
-            result_final_capital.setText(result.toBigDecimal().toPlainString())
+            result_final_capital.text = beautifyNumber(result.toBigDecimal().toPlainString())
         }
         else
         {
-            result_final_capital.setText("")
+            result_final_capital.text = ""
         }
     }
 

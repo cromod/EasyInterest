@@ -66,21 +66,21 @@ class PropertyLoanFragment() : AbstractFragment() {
         if (monthlyPayment.isFinite())
         {
             monthlyPayment = round(monthlyPayment * 100) / 100
-            result_monthly_payment.setText(monthlyPayment.toBigDecimal().toPlainString())
+            result_monthly_payment.text = beautifyNumber(monthlyPayment.toBigDecimal().toPlainString())
         }
         else
         {
-            result_monthly_payment.setText("")
+            result_monthly_payment.text = ""
         }
 
         if (loanCost.isFinite())
         {
             loanCost = round(loanCost * 100) / 100
-            result_loan_cost.setText(loanCost.toBigDecimal().toPlainString())
+            result_loan_cost.text = beautifyNumber(loanCost.toBigDecimal().toPlainString())
         }
         else
         {
-            result_loan_cost.setText("")
+            result_loan_cost.text = ""
         }
     }
 
