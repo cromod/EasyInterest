@@ -16,13 +16,13 @@ import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private fun loadFragment(fragment: Fragment?, title: String)
+    private fun loadFragment(fragment: Fragment?, title: Int)
     {
         if (fragment == null) return
 
         if (!fragment.isVisible)
         {
-            setTitle(title)
+            setTitle(getString(title))
             supportFragmentManager.beginTransaction().replace(fragment_to_display.id, fragment).commit()
         }
     }
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-        loadFragment(CompoundInterestFragment.newInstance(), getString(R.string.compound_interest))
+        loadFragment(CompoundInterestFragment.newInstance(), R.string.compound_interest)
 
         setSupportActionBar(toolbar)
 
@@ -76,8 +76,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.compound_interest -> loadFragment(CompoundInterestFragment.newInstance(), getString(R.string.compound_interest))
-            R.id.property_loan -> loadFragment(PropertyLoanFragment.newInstance(), getString(R.string.property_loan))
+            R.id.compound_interest -> loadFragment(CompoundInterestFragment.newInstance(), R.string.compound_interest)
+            R.id.property_loan -> loadFragment(PropertyLoanFragment.newInstance(), R.string.property_loan)
         }
         drawer_layout.closeDrawer(GravityCompat.START)
         return true

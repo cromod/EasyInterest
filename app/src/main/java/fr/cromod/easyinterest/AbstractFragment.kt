@@ -6,7 +6,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import kotlin.text.Regex
 
 abstract class AbstractFragment : Fragment() {
 
@@ -19,8 +18,8 @@ abstract class AbstractFragment : Fragment() {
             val split = numberStr.split(".")
             val firstDigits = split[0].substring(0,split[0].length%3)
             var nextDigits = split[0].substring(split[0].length%3)
-            val afterDigits = if (split.size > 1) "." + split[1] else ""
-            return firstDigits + nextDigits.replace("([0-9]{3})".toRegex(), " $1") + afterDigits
+            val afterDecimal = if (split.size > 1) "." + split[1] else ""
+            return firstDigits + nextDigits.replace("([0-9]{3})".toRegex(), " $1") + afterDecimal
         }
     }
 

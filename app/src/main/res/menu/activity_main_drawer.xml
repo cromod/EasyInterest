@@ -13,5 +13,15 @@
             android:id="@+id/property_loan"
             android:icon="@drawable/ic_home"
             android:title="@string/property_loan" />
+
+        <item
+            android:id="@+id/loan_prepayment"
+            android:icon="@drawable/ic_home"
+            android:title="@string/loan_prepayment" />
+
+        <item
+            android:id="@+id/loan_repurchase"
+            android:icon="@drawable/ic_home"
+            android:title="@string/loan_repurchase" />
     </group>
 </menu>

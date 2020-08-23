@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.property_loan.*
-import kotlin.math.pow
-import kotlin.math.round
 
 class PropertyLoanFragment() : AbstractFragment() {
 
@@ -18,18 +16,6 @@ class PropertyLoanFragment() : AbstractFragment() {
         {
             if (instance == null) instance = PropertyLoanFragment()
             return instance
-        }
-
-        fun calculateMonthlyPayment( loanAmount: Float, interestRate: Float, nbOfYears: Int): Float
-        {
-            val factor: Float = interestRate / (100 * 12)
-            val denominator: Float = 1 - 1 / (1+factor).pow(nbOfYears*12)
-            return loanAmount * factor / denominator
-        }
-
-        fun calculateLoanCost(loanAmount: Float, monthlyPayment: Float, nbOfYears: Int): Float
-        {
-            return monthlyPayment * 12 * nbOfYears - loanAmount
         }
     }
 
@@ -51,37 +37,28 @@ class PropertyLoanFragment() : AbstractFragment() {
 
     override fun updateResult()
     {
-        var monthlyPayment = calculateMonthlyPayment(
+        var monthlyPayment = Calculator.monthlyPayment(
             loanAmount = if(edit_loan_amount.text.isEmpty()) 0F else edit_loan_amount.text.toString().toFloat(),
             interestRate = if(edit_interest_rate.text.isEmpty()) 0F else edit_interest_rate.text.toString().toFloat(),
-            nbOfYears = if(edit_loan_duration.text.isEmpty()) 0 else edit_loan_duration.text.toString().toInt()
+            nbOfMonths = if(edit_loan_duration.text.isEmpty()) 0 else edit_loan_duration.text.toString().toInt() * 12
         )
 
-        var loanCost = calculateLoanCost(
+        var loanCost = Calculator.loanCost(
             loanAmount = if(edit_loan_amount.text.isEmpty()) 0F else edit_loan_amount.text.toString().toFloat(),
             monthlyPayment = monthlyPayment,
-            nbOfYears = if(edit_loan_duration.text.isEmpty()) 0 else edit_loan_duration.text.toString().toInt()
+            nbOfMonths = if(edit_loan_duration.text.isEmpty()) 0F else edit_loan_duration.text.toString().toFloat() * 12
         )
 
-        if (monthlyPayment.isFinite())
-        {
-            monthlyPayment = round(monthlyPayment * 100) / 100
-            result_monthly_payment.text = beautifyNumber(monthlyPayment.toBigDecimal().toPlainString())
-        }
-        else
-        {
-            result_monthly_payment.text = ""
-        }
+        monthlyPayment = Calculator.roundFloat(monthlyPayment)
+        loanCost = Calculator.roundFloat(loanCost)
 
-        if (loanCost.isFinite())
-        {
-            loanCost = round(loanCost * 100) / 100
-            result_loan_cost.text = beautifyNumber(loanCost.toBigDecimal().toPlainString())
-        }
-        else
-        {
-            result_loan_cost.text = ""
-        }
+        result_monthly_payment.text = if (monthlyPayment.isFinite()) {
+            beautifyNumber(monthlyPayment.toBigDecimal().toPlainString())
+        } else ""
+
+        result_loan_cost.text = if (loanCost.isFinite()) {
+            beautifyNumber(loanCost.toBigDecimal().toPlainString())
+        } else ""
     }
 
 }

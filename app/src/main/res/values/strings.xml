@@ -17,4 +17,6 @@
     <string name="monthly_payment">Mensualités</string>
     <string name="credit_cost">Coût du crédit</string>
     <string name="property_loan">Crédit immobilier</string>
+    <string name="loan_prepayment">Remboursement anticipé</string>
+    <string name="loan_repurchase">Rachat de crédit</string>
 </resources>
