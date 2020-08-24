@@ -28,7 +28,7 @@ abstract class Calculator {
             return result
         }
 
-        fun monthlyPayment( loanAmount: Float, interestRate: Float, nbOfMonths: Int, prepayment: Float = 0F ): Float
+        fun monthlyPayment( loanAmount: Float, interestRate: Float, nbOfMonths: Float, prepayment: Float = 0F ): Float
         {
             val factor: Float = interestRate / (100 * 12)
             val denominator: Float = 1 - 1 / (1+factor).pow(nbOfMonths)
@@ -45,7 +45,7 @@ abstract class Calculator {
 
         fun loanCost(loanAmount: Float, monthlyPayment: Float, nbOfMonths: Float, prepayment: Float = 0F): Float
         {
-            return monthlyPayment * nbOfMonths - loanAmount - prepayment
+            return monthlyPayment * nbOfMonths - loanAmount + prepayment
         }
     }
 }

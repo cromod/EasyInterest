@@ -78,6 +78,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when(item.itemId){
             R.id.compound_interest -> loadFragment(CompoundInterestFragment.newInstance(), R.string.compound_interest)
             R.id.property_loan -> loadFragment(PropertyLoanFragment.newInstance(), R.string.property_loan)
+            R.id.loan_prepayment -> loadFragment(LoanPrepaymentFragment.newInstance(), R.string.loan_prepayment)
         }
         drawer_layout.closeDrawer(GravityCompat.START)
         return true

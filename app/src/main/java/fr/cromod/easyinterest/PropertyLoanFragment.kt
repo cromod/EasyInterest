@@ -40,7 +40,7 @@ class PropertyLoanFragment() : AbstractFragment() {
         var monthlyPayment = Calculator.monthlyPayment(
             loanAmount = if(edit_loan_amount.text.isEmpty()) 0F else edit_loan_amount.text.toString().toFloat(),
             interestRate = if(edit_interest_rate.text.isEmpty()) 0F else edit_interest_rate.text.toString().toFloat(),
-            nbOfMonths = if(edit_loan_duration.text.isEmpty()) 0 else edit_loan_duration.text.toString().toInt() * 12
+            nbOfMonths = if(edit_loan_duration.text.isEmpty()) 0F else edit_loan_duration.text.toString().toFloat() * 12
         )
 
         var loanCost = Calculator.loanCost(

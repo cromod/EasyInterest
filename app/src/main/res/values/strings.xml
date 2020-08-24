@@ -19,4 +19,9 @@
     <string name="property_loan">Crédit immobilier</string>
     <string name="loan_prepayment">Remboursement anticipé</string>
     <string name="loan_repurchase">Rachat de crédit</string>
+    <string name="remaining_capital">Capital restant dû</string>
+    <string name="remaining_months">Nombre de mois restants</string>
+    <string name="remaining_months_after">Durée après remboursement</string>
+    <string name="prepayment_amount">Montant du remboursement anticipé</string>
+    <string name="gain">Gain</string>
 </resources>
