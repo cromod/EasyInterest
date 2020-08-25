@@ -106,12 +106,32 @@
         android:textAppearance="?android:textAppearanceLarge"
         />
 
+    <TextView
+        android:id="@+id/label_gain_on_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/result_loan_cost"
+        android:text="@string/gain"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <TextView
+        android:id="@+id/result_gain_on_cost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@id/label_gain_on_cost"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
     <Switch
         android:id="@+id/switch_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/result_loan_cost"
+        android:layout_below="@id/result_gain_on_cost"
         />
 
     <TextView

@@ -57,12 +57,19 @@ class LoanPrepaymentFragment() : AbstractFragment() {
             nbOfMonths = initialRemainingDuration.toFloat()
         )
 
+        val initialLoanCost = Calculator.loanCost(
+            loanAmount = if(edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString().toFloat(),
+            monthlyPayment = initialMonthlyPayment,
+            nbOfMonths = initialRemainingDuration.toFloat()
+        )
+
         val prepayment: Float = if(edit_prepayment_amount.text.isEmpty()) 0F else edit_prepayment_amount.text.toString().toFloat()
 
         // Compute results according to the selected type
         var result: Float = 0F
         var gain: Float = 0F
         var loanCost: Float = 0F
+        var gainOnCost: Float = 0F
         if (switch_result.isChecked)
         {
             result = Calculator.loanDuration(
@@ -105,7 +112,9 @@ class LoanPrepaymentFragment() : AbstractFragment() {
             result = Calculator.roundFloat(result)
             gain = Calculator.roundFloat(gain)
         }
+        gainOnCost = initialLoanCost - loanCost
         loanCost = Calculator.roundFloat(loanCost)
+        gainOnCost = Calculator.roundFloat(gainOnCost)
 
         // Display results
         prepayment_result.text = if (result.isFinite()) {
@@ -118,6 +127,10 @@ class LoanPrepaymentFragment() : AbstractFragment() {
 
         result_loan_cost.text = if (loanCost.isFinite()) {
             beautifyNumber(loanCost.toBigDecimal().toPlainString())
+        } else ""
+
+        result_gain_on_cost.text = if (gainOnCost.isFinite()) {
+            beautifyNumber(gainOnCost.toBigDecimal().toPlainString())
         } else ""
     }
 
