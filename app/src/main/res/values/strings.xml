@@ -24,4 +24,6 @@
     <string name="remaining_months_after">Durée après remboursement</string>
     <string name="prepayment_amount">Montant du remboursement anticipé</string>
     <string name="gain">Gain</string>
+    <string name="initial_interest_rate">Taux d\'intérêt initial %</string>
+    <string name="new_interest_rate">Nouveau taux d\'intérêt %</string>
 </resources>

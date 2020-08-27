@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/label_remaining_capital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/remaining_capital"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <EditText
+        android:id="@+id/edit_remaining_capital"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@id/label_remaining_capital"
+        android:text=""
+        android:inputType="numberDecimal"
+        />
+
+    <TextView
+        android:id="@+id/label_initial_interest_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/edit_remaining_capital"
+        android:text="@string/initial_interest_rate"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <EditText
+        android:id="@+id/edit_initial_interest_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@id/label_initial_interest_rate"
+        android:text=""
+        android:inputType="numberDecimal"
+        />
+
+    <TextView
+        android:id="@+id/label_remaining_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/edit_initial_interest_rate"
+        android:text="@string/remaining_months"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <EditText
+        android:id="@+id/edit_remaining_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@id/label_remaining_duration"
+        android:text=""
+        android:inputType="number"
+        />
+
+    <TextView
+        android:id="@+id/label_new_interest_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/edit_remaining_duration"
+        android:text="@string/new_interest_rate"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <EditText
+        android:id="@+id/edit_new_interest_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@id/label_new_interest_rate"
+        android:text=""
+        android:inputType="numberDecimal"
+        />
+
+    <TextView
+        android:id="@+id/label_loan_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/edit_new_interest_rate"
+        android:text="@string/credit_cost"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <TextView
+        android:id="@+id/result_loan_cost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@id/label_loan_cost"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <TextView
+        android:id="@+id/label_gain_on_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/result_loan_cost"
+        android:text="@string/gain"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <TextView
+        android:id="@+id/result_gain_on_cost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@id/label_gain_on_cost"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <Switch
+        android:id="@+id/switch_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/result_gain_on_cost"
+        />
+
+    <TextView
+        android:id="@+id/label_prepayment_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/switch_result"
+        android:text="@string/monthly_payment"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <TextView
+        android:id="@+id/prepayment_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@id/label_prepayment_result"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <TextView
+        android:id="@+id/label_prepayment_gain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/prepayment_result"
+        android:text="@string/gain"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <TextView
+        android:id="@+id/prepayment_gain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@id/label_prepayment_gain"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+</RelativeLayout>
