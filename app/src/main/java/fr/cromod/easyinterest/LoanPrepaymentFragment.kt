@@ -8,6 +8,18 @@ import kotlinx.android.synthetic.main.loan_prepayment.*
 
 class LoanPrepaymentFragment() : AbstractFragment() {
 
+    // Intermediate inputs for calculation
+    var initialRemainingDuration: Float = 0F
+    var initialMonthlyPayment: Float = 0F
+    var initialLoanCost: Float = 0F
+    var prepayment: Float = 0F
+
+    // Results
+    var result: Float = 0F
+    var gain: Float = 0F
+    var loanCost: Float = 0F
+    var gainOnCost: Float = 0F
+
     companion object
     {
         private var instance: LoanPrepaymentFragment? = null
@@ -48,75 +60,93 @@ class LoanPrepaymentFragment() : AbstractFragment() {
 
     override fun updateResult()
     {
-        // Initial values
-        val initialRemainingDuration: Int = if(edit_remaining_duration.text.isEmpty()) 0 else edit_remaining_duration.text.toString().toInt()
+        initializeUpdating()
 
-        val initialMonthlyPayment = Calculator.monthlyPayment(
+        if (switch_result.isChecked)
+        {
+            updateDuration(initialMonthlyPayment, initialRemainingDuration, initialLoanCost, prepayment)
+        }
+        else
+        {
+            updateMonthlyPayment(initialMonthlyPayment, initialRemainingDuration, initialLoanCost, prepayment)
+        }
+
+        displayResult()
+    }
+
+    private fun initializeUpdating()
+    {
+        initialRemainingDuration = if(edit_remaining_duration.text.isEmpty()) 0F else edit_remaining_duration.text.toString().toFloat()
+
+        initialMonthlyPayment = Calculator.monthlyPayment(
             loanAmount = if(edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString().toFloat(),
             interestRate = if(edit_interest_rate.text.isEmpty()) 0F else edit_interest_rate.text.toString().toFloat(),
             nbOfMonths = initialRemainingDuration.toFloat()
         )
 
-        val initialLoanCost = Calculator.loanCost(
+        initialLoanCost = Calculator.loanCost(
             loanAmount = if(edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString().toFloat(),
             monthlyPayment = initialMonthlyPayment,
             nbOfMonths = initialRemainingDuration.toFloat()
         )
 
-        val prepayment: Float = if(edit_prepayment_amount.text.isEmpty()) 0F else edit_prepayment_amount.text.toString().toFloat()
+        prepayment = if(edit_prepayment_amount.text.isEmpty()) 0F else edit_prepayment_amount.text.toString().toFloat()
+    }
 
-        // Compute results according to the selected type
-        var result: Float = 0F
-        var gain: Float = 0F
-        var loanCost: Float = 0F
-        var gainOnCost: Float = 0F
-        if (switch_result.isChecked)
-        {
-            result = Calculator.loanDuration(
-                loanAmount = if(edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString().toFloat(),
-                interestRate = if(edit_interest_rate.text.isEmpty()) 0F else edit_interest_rate.text.toString().toFloat(),
-                monthlyPayment = initialMonthlyPayment,
-                prepayment = prepayment
-            )
+    private fun updateDuration(initialMonthlyPayment: Float, initialRemainingDuration: Float, initialLoanCost: Float, prepayment: Float)
+    {
+        result = Calculator.loanDuration(
+            loanAmount = if(edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString().toFloat(),
+            interestRate = if(edit_interest_rate.text.isEmpty()) 0F else edit_interest_rate.text.toString().toFloat(),
+            monthlyPayment = initialMonthlyPayment,
+            prepayment = prepayment
+        )
 
-            gain = initialRemainingDuration.toFloat() - result
+        gain = initialRemainingDuration - result
 
-            loanCost = Calculator.loanCost(
-                loanAmount = if(edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString().toFloat(),
-                monthlyPayment = initialMonthlyPayment,
-                nbOfMonths = result,
-                prepayment = prepayment
-            )
+        loanCost = Calculator.loanCost(
+            loanAmount = if(edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString().toFloat(),
+            monthlyPayment = initialMonthlyPayment,
+            nbOfMonths = result,
+            prepayment = prepayment
+        )
 
-            result = Calculator.roundFloat(result, 0)
-            gain = Calculator.roundFloat(gain, 0)
-        }
-        else
-        {
-            result = Calculator.monthlyPayment(
-                loanAmount = if(edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString().toFloat(),
-                interestRate = if(edit_interest_rate.text.isEmpty()) 0F else edit_interest_rate.text.toString().toFloat(),
-                nbOfMonths = initialRemainingDuration.toFloat(),
-                prepayment = prepayment
-            )
-
-            gain = initialMonthlyPayment - result
-
-            loanCost = Calculator.loanCost(
-                loanAmount = if(edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString().toFloat(),
-                monthlyPayment = result,
-                nbOfMonths = initialRemainingDuration.toFloat(),
-                prepayment = prepayment
-            )
-
-            result = Calculator.roundFloat(result)
-            gain = Calculator.roundFloat(gain)
-        }
         gainOnCost = initialLoanCost - loanCost
+
+        result = Calculator.roundFloat(result, 0)
+        gain = Calculator.roundFloat(gain, 0)
         loanCost = Calculator.roundFloat(loanCost)
         gainOnCost = Calculator.roundFloat(gainOnCost)
+    }
 
-        // Display results
+    private fun updateMonthlyPayment(initialMonthlyPayment: Float, initialRemainingDuration: Float,  initialLoanCost: Float, prepayment: Float)
+    {
+        result = Calculator.monthlyPayment(
+            loanAmount = if(edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString().toFloat(),
+            interestRate = if(edit_interest_rate.text.isEmpty()) 0F else edit_interest_rate.text.toString().toFloat(),
+            nbOfMonths = initialRemainingDuration,
+            prepayment = prepayment
+        )
+
+        gain = initialMonthlyPayment - result
+
+        loanCost = Calculator.loanCost(
+            loanAmount = if(edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString().toFloat(),
+            monthlyPayment = result,
+            nbOfMonths = initialRemainingDuration,
+            prepayment = prepayment
+        )
+
+        gainOnCost = initialLoanCost - loanCost
+
+        result = Calculator.roundFloat(result)
+        gain = Calculator.roundFloat(gain)
+        loanCost = Calculator.roundFloat(loanCost)
+        gainOnCost = Calculator.roundFloat(gainOnCost)
+    }
+
+    private fun displayResult()
+    {
         prepayment_result.text = if (result.isFinite()) {
             beautifyNumber(result.toBigDecimal().toPlainString())
         } else ""
@@ -133,5 +163,4 @@ class LoanPrepaymentFragment() : AbstractFragment() {
             beautifyNumber(gainOnCost.toBigDecimal().toPlainString())
         } else ""
     }
-
 }
