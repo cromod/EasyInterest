@@ -16,17 +16,6 @@ import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private fun loadFragment(fragment: Fragment?, title: Int)
-    {
-        if (fragment == null) return
-
-        if (!fragment.isVisible)
-        {
-            setTitle(getString(title))
-            supportFragmentManager.beginTransaction().replace(fragment_to_display.id, fragment).commit()
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -61,21 +50,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean
+    {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
+        menuInflater.inflate(R.menu.action_menu, menu)
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.action_settings -> return true
+    override fun onOptionsItemSelected(item: MenuItem): Boolean
+    {
+        when(item.itemId)
+        {
+            R.id.action_save -> return true
+            R.id.action_history -> return true
             else -> return super.onOptionsItemSelected(item)
         }
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+    override fun onNavigationItemSelected(item: MenuItem): Boolean
+    {
+        when(item.itemId)
+        {
             R.id.compound_interest -> loadFragment(CompoundInterestFragment.newInstance(), R.string.compound_interest)
             R.id.property_loan -> loadFragment(PropertyLoanFragment.newInstance(), R.string.property_loan)
             R.id.loan_prepayment -> loadFragment(LoanPrepaymentFragment.newInstance(), R.string.loan_prepayment)
@@ -83,5 +78,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun loadFragment(fragment: Fragment?, title: Int)
+    {
+        if (fragment == null) return
+
+        if (!fragment.isVisible)
+        {
+            setTitle(getString(title))
+            supportFragmentManager.beginTransaction().replace(fragment_to_display.id, fragment).commit()
+        }
     }
 }

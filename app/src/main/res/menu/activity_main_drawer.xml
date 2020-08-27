@@ -6,22 +6,22 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/compound_interest"
-            android:icon="@drawable/ic_money"
+            android:icon="@drawable/ic_growing_chart"
             android:title="@string/compound_interest" />
 
         <item
             android:id="@+id/property_loan"
-            android:icon="@drawable/ic_home"
+            android:icon="@drawable/ic_house"
             android:title="@string/property_loan" />
 
         <item
             android:id="@+id/loan_prepayment"
-            android:icon="@drawable/ic_home"
+            android:icon="@drawable/ic_euro"
             android:title="@string/loan_prepayment" />
 
         <item
             android:id="@+id/loan_repurchase"
-            android:icon="@drawable/ic_home"
+            android:icon="@drawable/ic_bank"
             android:title="@string/loan_repurchase" />
     </group>
 </menu>

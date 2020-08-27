@@ -13,7 +13,7 @@ abstract class AbstractFragment : Fragment() {
 
     companion object
     {
-        open fun beautifyNumber(numberStr: String): String
+        fun beautifyNumber(numberStr: String): String
         {
             val split = numberStr.split(".")
             val firstDigits = split[0].substring(0,split[0].length%3)
