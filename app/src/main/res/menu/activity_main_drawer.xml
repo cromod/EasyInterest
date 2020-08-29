@@ -5,23 +5,47 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/compound_interest"
+            android:id="@+id/nav_compound_interest"
             android:icon="@drawable/ic_growing_chart"
             android:title="@string/compound_interest" />
 
         <item
-            android:id="@+id/property_loan"
+            android:id="@+id/nav_property_loan"
             android:icon="@drawable/ic_house"
             android:title="@string/property_loan" />
 
         <item
-            android:id="@+id/loan_prepayment"
+            android:id="@+id/nav_loan_prepayment"
             android:icon="@drawable/ic_euro"
             android:title="@string/loan_prepayment" />
 
         <item
-            android:id="@+id/loan_repurchase"
+            android:id="@+id/nav_loan_repurchase"
             android:icon="@drawable/ic_bank"
             android:title="@string/loan_repurchase" />
     </group>
+
+    <item android:title="@string/support">
+        <menu>
+            <item
+                android:id="@+id/nav_languages"
+                android:icon="@drawable/ic_language"
+                android:title="@string/languages" />
+
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_share"
+                android:title="@string/share" />
+
+            <item
+                android:id="@+id/nav_rate"
+                android:icon="@drawable/ic_thumb_up"
+                android:title="@string/rate_app" />
+
+            <item
+                android:id="@+id/nav_email_us"
+                android:icon="@drawable/ic_email"
+                android:title="@string/email_us" />
+        </menu>
+    </item>
 </menu>
