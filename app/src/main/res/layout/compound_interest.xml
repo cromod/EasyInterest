@@ -13,14 +13,17 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="@string/start_capital"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="bold"
         />
 
     <EditText
         android:id="@+id/edit_start_capital"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
+        android:ems="15"
         android:layout_below="@id/label_start_capital"
         android:text=""
         android:inputType="numberDecimal"
@@ -33,13 +36,16 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/edit_start_capital"
         android:text="@string/savings"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="bold"
         />
 
     <Switch
         android:id="@+id/switch_frequency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:thumbTint="@android:color/holo_blue_light"
+        android:trackTint="@android:color/background_dark"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/label_savings"
         />
@@ -55,9 +61,11 @@
 
     <EditText
         android:id="@+id/edit_savings"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
+        android:ems="15"
         android:layout_below="@id/label_frequency"
         android:text=""
         android:inputType="numberDecimal"
@@ -70,14 +78,17 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/edit_savings"
         android:text="@string/annual_growth"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="bold"
         />
 
     <EditText
         android:id="@+id/edit_annual_growth"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
+        android:ems="15"
         android:layout_below="@id/label_annual_growth"
         android:text=""
         android:inputType="numberDecimal"
@@ -90,17 +101,21 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/edit_annual_growth"
         android:text="@string/nb_of_years"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="bold"
         />
 
     <EditText
         android:id="@+id/edit_nb_of_years"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
+        android:ems="15"
         android:layout_below="@id/label_nb_of_years"
         android:text=""
         android:inputType="number"
+        android:layout_marginBottom="20dp"
         />
 
     <TextView
@@ -110,16 +125,21 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/edit_nb_of_years"
         android:text="@string/final_capital"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"
         />
 
     <TextView
         android:id="@+id/result_final_capital"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
         android:layout_centerHorizontal="true"
         android:gravity="center"
+        android:ems="15"
         android:layout_below="@id/label_final_capital"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:background="@drawable/border"
+        android:text="0.0"
         />
 </RelativeLayout>
