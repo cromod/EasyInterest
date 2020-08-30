@@ -13,14 +13,18 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="@string/remaining_capital"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
         />
 
     <EditText
         android:id="@+id/edit_remaining_capital"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
+        android:ems="15"
         android:layout_below="@id/label_remaining_capital"
         android:text=""
         android:inputType="numberDecimal"
@@ -33,14 +37,17 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/edit_remaining_capital"
         android:text="@string/interest_rate"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="bold"
         />
 
     <EditText
         android:id="@+id/edit_interest_rate"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
+        android:ems="15"
         android:layout_below="@id/label_interest_rate"
         android:text=""
         android:inputType="numberDecimal"
@@ -52,15 +59,18 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/edit_interest_rate"
-        android:text="@string/remaining_months"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:text="@string/remaining_months_before_prepayment"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="bold"
         />
 
     <EditText
         android:id="@+id/edit_remaining_duration"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
+        android:ems="15"
         android:layout_below="@id/label_remaining_duration"
         android:text=""
         android:inputType="number"
@@ -73,65 +83,21 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/edit_remaining_duration"
         android:text="@string/prepayment_amount"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="bold"
         />
 
     <EditText
         android:id="@+id/edit_prepayment_amount"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
+        android:ems="15"
         android:layout_below="@id/label_prepayment_amount"
         android:text=""
         android:inputType="numberDecimal"
-        />
-
-    <TextView
-        android:id="@+id/label_loan_cost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/edit_prepayment_amount"
-        android:text="@string/credit_cost"
-        android:textAppearance="?android:textAppearanceLarge"
-        />
-
-    <TextView
-        android:id="@+id/result_loan_cost"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_below="@id/label_loan_cost"
-        android:textAppearance="?android:textAppearanceLarge"
-        />
-
-    <TextView
-        android:id="@+id/label_gain_on_cost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/result_loan_cost"
-        android:text="@string/gain"
-        android:textAppearance="?android:textAppearanceLarge"
-        />
-
-    <TextView
-        android:id="@+id/result_gain_on_cost"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_below="@id/label_gain_on_cost"
-        android:textAppearance="?android:textAppearanceLarge"
-        />
-
-    <Switch
-        android:id="@+id/switch_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/result_gain_on_cost"
+        android:layout_marginBottom="20dp"
         />
 
     <TextView
@@ -139,39 +105,119 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/switch_result"
-        android:text="@string/monthly_payment"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:layout_below="@id/edit_prepayment_amount"
+        android:text="@string/new_monthly_payment"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="bold"
+        />
+
+    <Switch
+        android:id="@+id/switch_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:thumbTint="@android:color/holo_blue_light"
+        android:trackTint="@android:color/background_dark"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/label_prepayment_result"
+        android:layout_marginBottom="10dp"
         />
 
     <TextView
         android:id="@+id/prepayment_result"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_below="@id/label_prepayment_result"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:ems="15"
+        android:layout_below="@id/switch_result"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:background="@drawable/border"
+        android:layout_marginBottom="10dp"
         />
 
-    <TextView
-        android:id="@+id/label_prepayment_gain"
+    <RelativeLayout
+        android:id="@+id/group_prepayment_gain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/prepayment_result"
-        android:text="@string/gain"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/label_prepayment_gain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gain"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:layout_marginEnd="10dp"
+            />
+
+        <TextView
+            android:id="@+id/prepayment_gain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:ems="7"
+            android:layout_toEndOf="@id/label_prepayment_gain"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:background="@drawable/border"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/label_loan_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/group_prepayment_gain"
+        android:text="@string/credit_cost"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_marginBottom="10dp"
+        android:textStyle="bold"
         />
 
     <TextView
-        android:id="@+id/prepayment_gain"
-        android:layout_width="match_parent"
+        android:id="@+id/result_loan_cost"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_below="@id/label_prepayment_gain"
-        android:textAppearance="?android:textAppearanceLarge"
+        android:ems="15"
+        android:layout_below="@id/label_loan_cost"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:background="@drawable/border"
+        android:layout_marginBottom="10dp"
         />
+
+    <RelativeLayout
+        android:id="@+id/group_gain_on_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/result_loan_cost"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/label_gain_on_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gain"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:layout_marginEnd="10dp"
+            />
+
+        <TextView
+            android:id="@+id/result_gain_on_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="7"
+            android:gravity="center"
+            android:layout_toEndOf="@id/label_gain_on_cost"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:background="@drawable/border"
+            />
+    </RelativeLayout>
+
 
 </RelativeLayout>

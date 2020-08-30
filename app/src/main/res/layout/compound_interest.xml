@@ -141,6 +141,5 @@
         android:layout_below="@id/label_final_capital"
         android:textAppearance="?android:textAppearanceMedium"
         android:background="@drawable/border"
-        android:text="0.0"
         />
 </RelativeLayout>

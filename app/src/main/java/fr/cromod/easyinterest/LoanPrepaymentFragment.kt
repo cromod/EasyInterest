@@ -54,7 +54,7 @@ class LoanPrepaymentFragment() : AbstractFragment() {
     {
         switch_result.setOnClickListener {
             updateResult()
-            label_prepayment_result.setText(if(switch_result.isChecked) R.string.remaining_months_after else R.string.monthly_payment)
+            label_prepayment_result.setText(if(switch_result.isChecked) R.string.remaining_months_after_prepayment else R.string.new_monthly_payment)
         }
     }
 

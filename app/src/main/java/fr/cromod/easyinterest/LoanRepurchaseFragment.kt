@@ -53,7 +53,7 @@ class LoanRepurchaseFragment() : AbstractFragment() {
     {
         switch_result.setOnClickListener {
             updateResult()
-            label_prepayment_result.setText(if(switch_result.isChecked) R.string.remaining_months_after else R.string.monthly_payment)
+            label_repurchase_result.setText(if(switch_result.isChecked) R.string.remaining_months_after_repurchase else R.string.new_monthly_payment)
         }
     }
 
@@ -136,11 +136,11 @@ class LoanRepurchaseFragment() : AbstractFragment() {
 
     private fun displayResult()
     {
-        prepayment_result.text = if (result.isFinite()) {
+        repurchase_result.text = if (result.isFinite()) {
             beautifyNumber(result.toBigDecimal().toPlainString())
         } else ""
 
-        prepayment_gain.text = if (gain.isFinite()) {
+        repurchase_gain.text = if (gain.isFinite()) {
             beautifyNumber(gain.toBigDecimal().toPlainString())
         } else ""
 

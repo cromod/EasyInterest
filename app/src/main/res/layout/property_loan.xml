@@ -99,7 +99,6 @@
         android:layout_below="@id/label_monthly_payment"
         android:textAppearance="?android:textAppearanceMedium"
         android:background="@drawable/border"
-        android:text="0.0"
         android:layout_marginBottom="10dp"
         />
 
@@ -125,7 +124,6 @@
         android:layout_below="@id/label_loan_cost"
         android:textAppearance="?android:textAppearanceMedium"
         android:background="@drawable/border"
-        android:text="0.0"
         />
 
 </RelativeLayout>
