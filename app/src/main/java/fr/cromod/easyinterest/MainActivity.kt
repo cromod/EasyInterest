@@ -13,12 +13,14 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+import org.jetbrains.anko.selector
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener 
+{
+    
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -92,6 +94,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 LoanRepurchaseFragment.newInstance(),
                 R.string.loan_repurchase
             )
+            R.id.nav_languages -> chooseLanguage()
             R.id.nav_rate -> rateApp()
             R.id.nav_share -> shareApp()
             R.id.nav_email_us -> sendEmail()
@@ -140,6 +143,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         {
             rateIntent.data = Uri.parse("http://play.google.com/store/apps/details?id=$appPackageName")
             startActivity(rateIntent)
+        }
+    }
+
+    private fun chooseLanguage()
+    {
+        val languages = listOf(getString(R.string.french), getString(R.string.english))
+        var language: String = ""
+        selector(getString(R.string.choose_language), languages) { _, i ->
+            language = languages[i]
+        }
+        when(language)
+        {
+            getString(R.string.french) -> {}
+            getString(R.string.english) -> {}
         }
     }
 }

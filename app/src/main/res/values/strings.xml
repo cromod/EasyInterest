@@ -38,4 +38,7 @@
     <string name="share_to">Partager avec</string>
     <string name="app_email">easyinterest@gmail.com</string>
     <string name="mail_to">Envoyer un mail à</string>
+    <string name="french">Français</string>
+    <string name="english">Anglais</string>
+    <string name="choose_language">Choisissez une langue:</string>
 </resources>
