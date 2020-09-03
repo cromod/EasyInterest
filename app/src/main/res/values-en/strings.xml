@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Easy Interest</string>
+    <string name="start_capital">Start catpital</string>
+    <string name="savings">Savings</string>
+    <string name="monthly">Monthly</string>
+    <string name="yearly">Yearly</string>
+    <string name="annual_growth">Annual growth rate %</string>
+    <string name="nb_of_years">Number of years</string>
+    <string name="final_capital">Final capital</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="compound_interest">Compound interest</string>
+    <string name="loan_amount">Loan amount</string>
+    <string name="interest_rate">Interest rate %</string>
+    <string name="monthly_payment">Monthly payment</string>
+    <string name="new_monthly_payment">New monthly payment</string>
+    <string name="credit_cost">Loan coast</string>
+    <string name="property_loan">Property loan</string>
+    <string name="loan_prepayment">Loan prepayment</string>
+    <string name="loan_repurchase">Loan repurchase</string>
+    <string name="remaining_capital">Remaining capital</string>
+    <string name="remaining_months_before_prepayment">Number of remaining months</string>
+    <string name="remaining_months_after_prepayment">New number of remaining months</string>
+    <string name="remaining_months_before_repurchase">Number of remaining months</string>
+    <string name="remaining_months_after_repurchase">New number of remaining months</string>
+    <string name="prepayment_amount">Prepayment amount</string>
+    <string name="gain">A gain of</string>
+    <string name="initial_interest_rate">Initial interest rate %</string>
+    <string name="new_interest_rate">New interest rate %</string>
+    <string name="save">Save</string>
+    <string name="history">History</string>
+    <string name="support">Support</string>
+    <string name="languages">Languages</string>
+    <string name="share">Share app</string>
+    <string name="rate_app">Rate app</string>
+    <string name="email_us">Contact us</string>
+    <string name="share_this_app">Try the financial calculator EasyInterest :\nURL to add</string>
+    <string name="share_to">Share to</string>
+    <string name="app_email">easyinterest@gmail.com</string>
+    <string name="mail_to">Send an email to</string>
+    <string name="french">French</string>
+    <string name="english">English</string>
+    <string name="choose_language">Select a language:</string>
+</resources>

@@ -2,6 +2,7 @@ package fr.cromod.easyinterest
 
 import android.app.Activity
 import android.content.Context
+import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
@@ -21,6 +22,12 @@ abstract class AbstractFragment : Fragment() {
             val afterDecimal = if (split.size > 1) "." + split[1] else ""
             return firstDigits + nextDigits.replace("([0-9]{3})".toRegex(), " $1") + afterDecimal
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
+        super.onCreate(savedInstanceState)
+        retainInstance = true
     }
 
     override fun onAttach(context: Context)

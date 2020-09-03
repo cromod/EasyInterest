@@ -14,13 +14,16 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import org.jetbrains.anko.selector
+import java.util.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener 
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener
 {
-    
+    lateinit var currentFragment: Fragment
+    var currentTitle: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -103,14 +106,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    private fun loadFragment(fragment: Fragment?, title: Int)
+    private fun loadFragment(fragment: Fragment? = currentFragment, title: Int = currentTitle)
     {
         if (fragment == null) return
+        currentFragment = fragment
+        currentTitle = title
 
-        if (!fragment.isVisible)
+        if (!currentFragment.isVisible)
         {
-            setTitle(getString(title))
-            supportFragmentManager.beginTransaction().replace(fragment_to_display.id, fragment).commit()
+            setTitle(getString(currentTitle))
+            supportFragmentManager.beginTransaction().replace(fragment_to_display.id, currentFragment).commit()
         }
     }
 
@@ -149,14 +154,29 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun chooseLanguage()
     {
         val languages = listOf(getString(R.string.french), getString(R.string.english))
-        var language: String = ""
         selector(getString(R.string.choose_language), languages) { _, i ->
-            language = languages[i]
+            when(languages[i])
+            {
+                getString(R.string.french) -> setLocale("fr")
+                getString(R.string.english) -> setLocale("en")
+            }
         }
-        when(language)
-        {
-            getString(R.string.french) -> {}
-            getString(R.string.english) -> {}
-        }
+
+    }
+
+    private fun setLocale(localeName: String)
+    {
+        // Set selected language
+        val config = resources.configuration
+        val locale = Locale(localeName)
+        Locale.setDefault(locale)
+        config.locale = locale
+        resources.updateConfiguration(config, resources.displayMetrics)
+
+        // Restart activity and reload fragment
+        supportFragmentManager.beginTransaction().remove(currentFragment).commit()
+        finish()
+        startActivity(intent)
+        loadFragment()
     }
 }
