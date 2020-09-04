@@ -33,11 +33,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         setSupportActionBar(toolbar)
 
-        val fab: FloatingActionButton = findViewById(R.id.fab)
+        // TO ENABLE WHEN COMPLETELY IMPLEMENTED
+        /*val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
             Snackbar.make(view, "TO DEFINE", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
-        }
+        }*/
 
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar,
@@ -63,7 +64,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreateOptionsMenu(menu: Menu): Boolean
     {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.action_menu, menu)
+        // TO ENABLE WHEN COMPLETELY IMPLEMENTED
+        //menuInflater.inflate(R.menu.action_menu, menu)
         return true
     }
 
@@ -170,6 +172,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val config = resources.configuration
         val locale = Locale(localeName)
         Locale.setDefault(locale)
+        if (locale == config.locale) return
         config.locale = locale
         resources.updateConfiguration(config, resources.displayMetrics)
 
