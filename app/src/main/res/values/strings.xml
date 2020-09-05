@@ -34,9 +34,9 @@
     <string name="share">Partager l\'application</string>
     <string name="rate_app">Noter l\'application</string>
     <string name="email_us">Nous contacter</string>
-    <string name="share_this_app">Essayez la calculatrice financière EasyInterest :\nURL to add</string>
+    <string name="share_this_app">Essayez la calculatrice financière Easy Interest :\nhttp://play.google.com/store/apps/details?id=fr.cromod.easyinterest</string>
     <string name="share_to">Partager avec</string>
-    <string name="app_email">easyinterest@gmail.com</string>
+    <string name="app_email">app.cromod@gmail.com</string>
     <string name="mail_to">Envoyer un mail à</string>
     <string name="french">Français</string>
     <string name="english">English</string>
