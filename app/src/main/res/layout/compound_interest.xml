@@ -18,7 +18,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/start_capital"
         />
-s
+
     <EditText
         android:id="@+id/edit_start_capital"
         android:layout_width="wrap_content"

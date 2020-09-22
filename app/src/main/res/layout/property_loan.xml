@@ -9,13 +9,14 @@
 
     <TextView
         android:id="@+id/label_loan_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/loan_amount"
-        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:gravity="center_horizontal"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
+        android:text="@string/loan_amount"
         />
 
     <EditText
@@ -28,17 +29,21 @@
         android:layout_below="@id/label_loan_amount"
         android:text=""
         android:inputType="numberDecimal"
+        android:textSize="20dp"
+        android:layout_marginHorizontal="30dp"
         />
 
     <TextView
         android:id="@+id/label_interest_rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:gravity="center_horizontal"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/edit_loan_amount"
         android:text="@string/interest_rate"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textStyle="bold"
         />
 
     <EditText
@@ -51,17 +56,21 @@
         android:layout_below="@id/label_interest_rate"
         android:text=""
         android:inputType="numberDecimal"
+        android:textSize="20dp"
+        android:layout_marginHorizontal="30dp"
         />
 
     <TextView
         android:id="@+id/label_loan_duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:gravity="center_horizontal"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/edit_interest_rate"
         android:text="@string/nb_of_years"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textStyle="bold"
         />
 
     <EditText
@@ -75,54 +84,63 @@
         android:text=""
         android:inputType="number"
         android:layout_marginBottom="20dp"
+        android:textSize="20dp"
+        android:layout_marginHorizontal="30dp"
         />
 
     <TextView
         android:id="@+id/label_monthly_payment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/edit_loan_duration"
-        android:text="@string/monthly_payment"
-        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:gravity="center_horizontal"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
         android:textStyle="bold"
         android:layout_marginBottom="10dp"
+        android:layout_below="@id/edit_loan_duration"
+        android:text="@string/monthly_payment"
         />
 
     <TextView
         android:id="@+id/result_monthly_payment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
+        android:gravity="center_horizontal"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
         android:ems="15"
         android:layout_below="@id/label_monthly_payment"
         android:textAppearance="?android:textAppearanceMedium"
+        android:layout_marginHorizontal="30dp"
         android:background="@drawable/border"
         android:layout_marginBottom="10dp"
         />
 
     <TextView
         android:id="@+id/label_loan_cost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/result_monthly_payment"
-        android:text="@string/credit_cost"
-        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:gravity="center_horizontal"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
         android:textStyle="bold"
         android:layout_marginBottom="10dp"
+        android:layout_below="@id/result_monthly_payment"
+        android:text="@string/credit_cost"
         />
 
     <TextView
         android:id="@+id/result_loan_cost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
+        android:gravity="center_horizontal"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
         android:ems="15"
         android:layout_below="@id/label_loan_cost"
-        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_marginHorizontal="30dp"
         android:background="@drawable/border"
         />
 
