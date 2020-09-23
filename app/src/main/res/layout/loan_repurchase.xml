@@ -9,13 +9,14 @@
 
     <TextView
         android:id="@+id/label_remaining_capital"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/remaining_capital"
-        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:gravity="center_horizontal"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
+        android:text="@string/remaining_capital"
         />
 
     <EditText
@@ -28,17 +29,21 @@
         android:layout_below="@id/label_remaining_capital"
         android:text=""
         android:inputType="numberDecimal"
+        android:textSize="20dp"
+        android:layout_marginHorizontal="30dp"
         />
 
     <TextView
         android:id="@+id/label_initial_interest_rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:gravity="center_horizontal"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/edit_remaining_capital"
         android:text="@string/initial_interest_rate"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textStyle="bold"
         />
 
     <EditText
@@ -51,17 +56,21 @@
         android:layout_below="@id/label_initial_interest_rate"
         android:text=""
         android:inputType="numberDecimal"
+        android:textSize="20dp"
+        android:layout_marginHorizontal="30dp"
         />
 
     <TextView
         android:id="@+id/label_remaining_duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:gravity="center_horizontal"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/edit_initial_interest_rate"
         android:text="@string/remaining_months_before_repurchase"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textStyle="bold"
         />
 
     <EditText
@@ -74,17 +83,21 @@
         android:layout_below="@id/label_remaining_duration"
         android:text=""
         android:inputType="number"
+        android:textSize="20dp"
+        android:layout_marginHorizontal="30dp"
         />
 
     <TextView
         android:id="@+id/label_new_interest_rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:gravity="center_horizontal"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/edit_remaining_duration"
         android:text="@string/new_interest_rate"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textStyle="bold"
         />
 
     <EditText
@@ -97,18 +110,21 @@
         android:layout_below="@id/label_new_interest_rate"
         android:text=""
         android:inputType="numberDecimal"
-        android:layout_marginBottom="20dp"
+        android:textSize="20dp"
+        android:layout_marginHorizontal="30dp"
         />
 
     <TextView
         android:id="@+id/label_repurchase_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:gravity="center_horizontal"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
         android:layout_below="@id/edit_new_interest_rate"
         android:text="@string/new_monthly_payment"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textStyle="bold"
         />
 
     <Switch
@@ -119,20 +135,21 @@
         android:trackTint="@android:color/background_dark"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/label_repurchase_result"
-        android:layout_marginBottom="10dp"
         />
 
     <TextView
         android:id="@+id/repurchase_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
+        android:gravity="center_horizontal"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
         android:ems="15"
         android:layout_below="@id/switch_result"
-        android:textAppearance="?android:textAppearanceMedium"
         android:background="@drawable/border"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="30dp"
         />
 
     <RelativeLayout
@@ -141,14 +158,15 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/repurchase_result"
-        android:layout_marginBottom="20dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="30dp">
 
         <TextView
             android:id="@+id/label_repurchase_gain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="18dp"
             android:text="@string/gain"
-            android:textAppearance="?android:textAppearanceMedium"
             android:layout_marginEnd="10dp"
             />
 
@@ -156,10 +174,10 @@
             android:id="@+id/repurchase_gain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:ems="7"
+            android:gravity="center_horizontal"
+            android:ems="10"
+            android:textSize="18dp"
             android:layout_toEndOf="@id/label_repurchase_gain"
-            android:textAppearance="?android:textAppearanceMedium"
             android:background="@drawable/border"
             />
 
@@ -167,27 +185,30 @@
 
     <TextView
         android:id="@+id/label_loan_cost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:gravity="center_horizontal"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
         android:layout_below="@id/group_repurchase_gain"
         android:text="@string/credit_cost"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:layout_marginBottom="10dp"
-        android:textStyle="bold"
         />
 
     <TextView
         android:id="@+id/result_loan_cost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
+        android:gravity="center_horizontal"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
         android:ems="15"
         android:layout_below="@id/label_loan_cost"
-        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_marginHorizontal="30dp"
         android:background="@drawable/border"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         />
 
     <RelativeLayout
@@ -196,14 +217,15 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/result_loan_cost"
-        android:layout_marginBottom="10dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="30dp">
 
         <TextView
             android:id="@+id/label_gain_on_cost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="18dp"
             android:text="@string/gain"
-            android:textAppearance="?android:textAppearanceMedium"
             android:layout_marginEnd="10dp"
             />
 
@@ -211,10 +233,10 @@
             android:id="@+id/result_gain_on_cost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="7"
-            android:gravity="center"
+            android:gravity="center_horizontal"
+            android:ems="10"
+            android:textSize="18dp"
             android:layout_toEndOf="@id/label_gain_on_cost"
-            android:textAppearance="?android:textAppearanceMedium"
             android:background="@drawable/border"
             />
     </RelativeLayout>
