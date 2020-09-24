@@ -21,4 +21,9 @@
         <item name="android:textSize">@dimen/title_size</item>
     </style>
 
+    <style name="NavigationViewStyle">
+        <item name="android:textSize">@dimen/item_navigation</item>
+    </style>
+
+
 </resources>
