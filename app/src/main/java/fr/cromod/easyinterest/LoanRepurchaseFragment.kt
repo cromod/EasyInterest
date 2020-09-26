@@ -5,6 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.loan_repurchase.*
+import kotlinx.android.synthetic.main.loan_repurchase.edit_remaining_capital
+import kotlinx.android.synthetic.main.loan_repurchase.edit_remaining_duration
+import kotlinx.android.synthetic.main.loan_repurchase.result_gain_on_cost
+import kotlinx.android.synthetic.main.loan_repurchase.result_loan_cost
+import kotlinx.android.synthetic.main.loan_repurchase.switch_result
 
 class LoanRepurchaseFragment() : AbstractFragment() {
 
@@ -21,9 +26,9 @@ class LoanRepurchaseFragment() : AbstractFragment() {
 
     companion object
     {
-        private var instance: LoanRepurchaseFragment? = null
+        private var instance: AbstractFragment? = null
 
-        fun newInstance(): LoanRepurchaseFragment?
+        fun newInstance(): AbstractFragment?
         {
             if (instance == null) instance = LoanRepurchaseFragment()
             return instance
@@ -151,5 +156,26 @@ class LoanRepurchaseFragment() : AbstractFragment() {
         result_gain_on_cost.text = if (gainOnCost.isFinite()) {
             beautifyNumber(gainOnCost.toBigDecimal().toPlainString())
         } else ""
+    }
+
+    override fun saveInputs()
+    {
+        inputs = mapOf(edit_remaining_capital.id to edit_remaining_capital.text.toString(),
+            edit_remaining_duration.id to edit_remaining_duration.text.toString(),
+            edit_initial_interest_rate.id to edit_initial_interest_rate.text.toString(),
+            edit_new_interest_rate.id to edit_new_interest_rate.text.toString(),
+            switch_result.id to if(switch_result.isChecked) "on" else "off"
+        )
+    }
+
+    override fun restoreInputs()
+    {
+        setEditTextFromInputs(edit_remaining_capital, inputs)
+        setEditTextFromInputs(edit_remaining_duration, inputs)
+        setEditTextFromInputs(edit_initial_interest_rate, inputs)
+        setEditTextFromInputs(edit_new_interest_rate, inputs)
+
+        switch_result?.isChecked = inputs.containsKey(switch_result?.id)
+                && inputs[switch_result?.id] == "on"
     }
 }

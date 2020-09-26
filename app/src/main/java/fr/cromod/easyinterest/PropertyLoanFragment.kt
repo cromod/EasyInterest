@@ -10,9 +10,9 @@ class PropertyLoanFragment() : AbstractFragment() {
 
     companion object
     {
-        private var instance: PropertyLoanFragment? = null
+        private var instance: AbstractFragment? = null
 
-        fun newInstance(): PropertyLoanFragment?
+        fun newInstance(): AbstractFragment?
         {
             if (instance == null) instance = PropertyLoanFragment()
             return instance
@@ -61,4 +61,18 @@ class PropertyLoanFragment() : AbstractFragment() {
         } else ""
     }
 
+    override fun saveInputs()
+    {
+        inputs = mapOf(edit_loan_amount.id to edit_loan_amount.text.toString(),
+            edit_interest_rate.id to edit_interest_rate.text.toString(),
+            edit_loan_duration.id to edit_loan_duration.text.toString()
+        )
+    }
+
+    override fun restoreInputs()
+    {
+        setEditTextFromInputs(edit_loan_amount, inputs)
+        setEditTextFromInputs(edit_interest_rate, inputs)
+        setEditTextFromInputs(edit_loan_duration, inputs)
+    }
 }

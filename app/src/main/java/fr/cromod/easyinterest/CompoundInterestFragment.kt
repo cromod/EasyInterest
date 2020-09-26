@@ -10,9 +10,9 @@ class CompoundInterestFragment() : AbstractFragment() {
 
     companion object
     {
-        private var instance: CompoundInterestFragment? = null
+        private var instance: AbstractFragment? = null
 
-        fun newInstance(): CompoundInterestFragment?
+        fun newInstance(): AbstractFragment?
         {
             if (instance == null) instance = CompoundInterestFragment()
             return instance
@@ -62,4 +62,24 @@ class CompoundInterestFragment() : AbstractFragment() {
         } else ""
     }
 
+    override fun saveInputs()
+    {
+        inputs = mapOf(edit_start_capital.id to edit_start_capital.text.toString(),
+            edit_annual_growth.id to edit_annual_growth.text.toString(),
+            edit_nb_of_years.id to edit_nb_of_years.text.toString(),
+            edit_savings.id to edit_savings.text.toString(),
+            switch_frequency.id to if(switch_frequency.isChecked) "on" else "off"
+        )
+    }
+
+    override fun restoreInputs()
+    {
+        setEditTextFromInputs(edit_start_capital, inputs)
+        setEditTextFromInputs(edit_annual_growth, inputs)
+        setEditTextFromInputs(edit_nb_of_years, inputs)
+        setEditTextFromInputs(edit_savings, inputs)
+
+        switch_frequency?.isChecked = inputs.containsKey(switch_frequency?.id)
+                                        && inputs[switch_frequency?.id] == "on"
+    }
 }

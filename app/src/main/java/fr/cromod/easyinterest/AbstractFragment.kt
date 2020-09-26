@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 abstract class AbstractFragment : Fragment() {
 
     private lateinit var parentActivity: Activity
+    var inputs: Map<Int, String> = mapOf()
 
     companion object
     {
@@ -21,6 +22,18 @@ abstract class AbstractFragment : Fragment() {
             var nextDigits = split[0].substring(split[0].length%3)
             val afterDecimal = if (split.size > 1) "." + split[1] else ""
             return firstDigits + nextDigits.replace("([0-9]{3})".toRegex(), " $1") + afterDecimal
+        }
+
+        fun setEditTextFromInputs(editText: EditText?, inputs: Map<Int, String>)
+        {
+            if(inputs.containsKey(editText?.id))
+            {
+                editText?.setText(inputs[editText?.id])
+            }
+            else
+            {
+                editText?.setText("")
+            }
         }
     }
 
@@ -38,6 +51,12 @@ abstract class AbstractFragment : Fragment() {
         }
     }
 
+    override fun onResume()
+    {
+        super.onResume()
+        restoreInputs()
+    }
+
     open fun listenTextChanged(editText: EditText)
     {
         editText.addTextChangedListener(object : TextWatcher
@@ -52,4 +71,8 @@ abstract class AbstractFragment : Fragment() {
     }
 
     abstract fun updateResult()
+
+    abstract fun saveInputs()
+
+    abstract fun restoreInputs()
 }

@@ -22,9 +22,9 @@ class LoanPrepaymentFragment() : AbstractFragment() {
 
     companion object
     {
-        private var instance: LoanPrepaymentFragment? = null
+        private var instance: AbstractFragment? = null
 
-        fun newInstance(): LoanPrepaymentFragment?
+        fun newInstance(): AbstractFragment?
         {
             if (instance == null) instance = LoanPrepaymentFragment()
             return instance
@@ -158,5 +158,26 @@ class LoanPrepaymentFragment() : AbstractFragment() {
         result_gain_on_cost.text = if (gainOnCost.isFinite()) {
             beautifyNumber(gainOnCost.toBigDecimal().toPlainString())
         } else ""
+    }
+
+    override fun saveInputs()
+    {
+        inputs = mapOf(edit_remaining_capital.id to edit_remaining_capital.text.toString(),
+            edit_remaining_duration.id to edit_remaining_duration.text.toString(),
+            edit_interest_rate.id to edit_interest_rate.text.toString(),
+            edit_prepayment_amount.id to edit_prepayment_amount.text.toString(),
+            switch_result.id to if(switch_result.isChecked) "on" else "off"
+        )
+    }
+
+    override fun restoreInputs()
+    {
+        setEditTextFromInputs(edit_remaining_capital, inputs)
+        setEditTextFromInputs(edit_remaining_duration, inputs)
+        setEditTextFromInputs(edit_interest_rate, inputs)
+        setEditTextFromInputs(edit_prepayment_amount, inputs)
+
+        switch_result?.isChecked = inputs.containsKey(switch_result?.id)
+                && inputs[switch_result?.id] == "on"
     }
 }

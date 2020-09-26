@@ -10,6 +10,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -17,17 +18,18 @@ import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.selector
 import java.util.*
 
+
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener
 {
-    lateinit var currentFragment: Fragment
-    var currentTitle: Int = 0
+    var currentFragment: AbstractFragment? = CompoundInterestFragment.newInstance()
+    var currentTitle: Int = R.string.compound_interest
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-        loadFragment(CompoundInterestFragment.newInstance(), R.string.compound_interest)
+        loadFragment()
 
         setSupportActionBar(toolbar)
 
@@ -79,6 +81,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean
     {
+        currentFragment?.saveInputs()
+        
         when(item.itemId)
         {
             R.id.nav_compound_interest -> loadFragment(
@@ -106,16 +110,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    private fun loadFragment(fragment: Fragment? = currentFragment, title: Int = currentTitle)
+    private fun loadFragment(fragment: AbstractFragment? = currentFragment, title: Int = currentTitle)
     {
         if (fragment == null) return
+
         currentFragment = fragment
         currentTitle = title
 
-        if (!currentFragment.isVisible)
+        if (!currentFragment!!.isVisible)
         {
             setTitle(getString(currentTitle))
-            supportFragmentManager.beginTransaction().replace(fragment_to_display.id, currentFragment).commit()
+            supportFragmentManager.beginTransaction().replace(fragment_to_display.id, currentFragment!!).commit()
         }
     }
 
@@ -175,9 +180,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         resources.updateConfiguration(config, resources.displayMetrics)
 
         // Restart activity and reload fragment
-        supportFragmentManager.beginTransaction().remove(currentFragment).commit()
+        if (currentFragment != null)
+        {
+            currentFragment?.saveInputs()
+            supportFragmentManager.beginTransaction().remove(currentFragment!!).commit()
+        }
         finish()
         startActivity(intent)
-        loadFragment()
     }
 }
