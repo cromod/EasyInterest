@@ -12,6 +12,7 @@ abstract class AbstractFragment : Fragment() {
 
     private lateinit var parentActivity: Activity
     var inputs: Map<Int, String> = mapOf()
+    var enabled: Boolean = false
 
     companion object
     {

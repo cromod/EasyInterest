@@ -9,8 +9,6 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -29,6 +27,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+        initializeFragment()
         loadFragment()
 
         setSupportActionBar(toolbar)
@@ -110,9 +109,37 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
+    private fun initializeFragment()
+    {
+        if (PropertyLoanFragment.newInstance()!!.enabled)
+        {
+            currentFragment = PropertyLoanFragment.newInstance()
+            currentTitle = R.string.property_loan
+        }
+        else if (LoanPrepaymentFragment.newInstance()!!.enabled)
+        {
+            currentFragment = LoanPrepaymentFragment.newInstance()
+            currentTitle = R.string.loan_prepayment
+        }
+        else if (LoanRepurchaseFragment.newInstance()!!.enabled)
+        {
+            currentFragment = LoanRepurchaseFragment.newInstance()
+            currentTitle = R.string.loan_repurchase
+        }
+        else
+        {
+            // Default fragment
+            currentFragment = CompoundInterestFragment.newInstance()
+            currentTitle = R.string.compound_interest
+        }
+    }
+
     private fun loadFragment(fragment: AbstractFragment? = currentFragment, title: Int = currentTitle)
     {
         if (fragment == null) return
+
+        currentFragment?.enabled = false
+        fragment?.enabled = true
 
         currentFragment = fragment
         currentTitle = title
