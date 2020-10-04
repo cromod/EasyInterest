@@ -1,244 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/label_remaining_capital"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:gravity="center_horizontal"
-        android:autoSizeTextType="uniform"
-        android:maxLines="1"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:text="@string/remaining_capital"
-        />
-
-    <EditText
-        android:id="@+id/edit_remaining_capital"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:ems="15"
-        android:layout_below="@id/label_remaining_capital"
-        android:text=""
-        android:inputType="numberDecimal"
-        android:textSize="20dp"
-        android:layout_marginHorizontal="30dp"
-        />
-
-    <TextView
-        android:id="@+id/label_initial_interest_rate"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:gravity="center_horizontal"
-        android:autoSizeTextType="uniform"
-        android:maxLines="1"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/edit_remaining_capital"
-        android:text="@string/initial_interest_rate"
-        />
-
-    <EditText
-        android:id="@+id/edit_initial_interest_rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:ems="15"
-        android:layout_below="@id/label_initial_interest_rate"
-        android:text=""
-        android:inputType="numberDecimal"
-        android:textSize="20dp"
-        android:layout_marginHorizontal="30dp"
-        />
-
-    <TextView
-        android:id="@+id/label_remaining_duration"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:gravity="center_horizontal"
-        android:autoSizeTextType="uniform"
-        android:maxLines="1"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/edit_initial_interest_rate"
-        android:text="@string/remaining_months_before_repurchase"
-        />
-
-    <EditText
-        android:id="@+id/edit_remaining_duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:ems="15"
-        android:layout_below="@id/label_remaining_duration"
-        android:text=""
-        android:inputType="number"
-        android:textSize="20dp"
-        android:layout_marginHorizontal="30dp"
-        />
-
-    <TextView
-        android:id="@+id/label_new_interest_rate"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:gravity="center_horizontal"
-        android:autoSizeTextType="uniform"
-        android:maxLines="1"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/edit_remaining_duration"
-        android:text="@string/new_interest_rate"
-        />
-
-    <EditText
-        android:id="@+id/edit_new_interest_rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:ems="15"
-        android:layout_below="@id/label_new_interest_rate"
-        android:text=""
-        android:inputType="numberDecimal"
-        android:textSize="20dp"
-        android:layout_marginHorizontal="30dp"
-        />
-
-    <TextView
-        android:id="@+id/label_repurchase_result"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:gravity="center_horizontal"
-        android:autoSizeTextType="uniform"
-        android:maxLines="1"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/edit_new_interest_rate"
-        android:text="@string/new_monthly_payment"
-        />
-
-    <Switch
-        android:id="@+id/switch_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:thumbTint="@android:color/holo_blue_light"
-        android:trackTint="@android:color/background_dark"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/label_repurchase_result"
-        />
-
-    <TextView
-        android:id="@+id/repurchase_result"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_centerHorizontal="true"
-        android:gravity="center_horizontal"
-        android:autoSizeTextType="uniform"
-        android:maxLines="1"
-        android:ems="15"
-        android:layout_below="@id/switch_result"
-        android:background="@drawable/border"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="30dp"
-        />
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
     <RelativeLayout
-        android:id="@+id/group_repurchase_gain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/repurchase_result"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="30dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
         <TextView
-            android:id="@+id/label_repurchase_gain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:text="@string/gain"
-            android:layout_marginEnd="10dp"
-            />
-
-        <TextView
-            android:id="@+id/repurchase_gain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/label_remaining_capital"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
             android:gravity="center_horizontal"
-            android:ems="10"
-            android:textSize="18dp"
-            android:layout_toEndOf="@id/label_repurchase_gain"
-            android:background="@drawable/border"
+            android:autoSizeTextType="uniform"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:text="@string/remaining_capital"
             />
+
+        <EditText
+            android:id="@+id/edit_remaining_capital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:ems="15"
+            android:layout_below="@id/label_remaining_capital"
+            android:text=""
+            android:inputType="numberDecimal"
+            android:textSize="20dp"
+            android:layout_marginHorizontal="30dp"
+            />
+
+        <TextView
+            android:id="@+id/label_initial_interest_rate"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:gravity="center_horizontal"
+            android:autoSizeTextType="uniform"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/edit_remaining_capital"
+            android:text="@string/initial_interest_rate"
+            />
+
+        <EditText
+            android:id="@+id/edit_initial_interest_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:ems="15"
+            android:layout_below="@id/label_initial_interest_rate"
+            android:text=""
+            android:inputType="numberDecimal"
+            android:textSize="20dp"
+            android:layout_marginHorizontal="30dp"
+            />
+
+        <TextView
+            android:id="@+id/label_remaining_duration"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:gravity="center_horizontal"
+            android:autoSizeTextType="uniform"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/edit_initial_interest_rate"
+            android:text="@string/remaining_months_before_repurchase"
+            />
+
+        <EditText
+            android:id="@+id/edit_remaining_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:ems="15"
+            android:layout_below="@id/label_remaining_duration"
+            android:text=""
+            android:inputType="number"
+            android:textSize="20dp"
+            android:layout_marginHorizontal="30dp"
+            />
+
+        <TextView
+            android:id="@+id/label_new_interest_rate"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:gravity="center_horizontal"
+            android:autoSizeTextType="uniform"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/edit_remaining_duration"
+            android:text="@string/new_interest_rate"
+            />
+
+        <EditText
+            android:id="@+id/edit_new_interest_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:ems="15"
+            android:layout_below="@id/label_new_interest_rate"
+            android:text=""
+            android:inputType="numberDecimal"
+            android:textSize="20dp"
+            android:layout_marginHorizontal="30dp"
+            />
+
+        <TextView
+            android:id="@+id/label_repurchase_result"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:gravity="center_horizontal"
+            android:autoSizeTextType="uniform"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/edit_new_interest_rate"
+            android:text="@string/new_monthly_payment"
+            />
+
+        <Switch
+            android:id="@+id/switch_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:thumbTint="@android:color/holo_blue_light"
+            android:trackTint="@android:color/background_dark"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/label_repurchase_result"
+            />
+
+        <TextView
+            android:id="@+id/repurchase_result"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:autoSizeTextType="uniform"
+            android:maxLines="1"
+            android:ems="15"
+            android:layout_below="@id/switch_result"
+            android:background="@drawable/border"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="30dp"
+            />
+
+        <RelativeLayout
+            android:id="@+id/group_repurchase_gain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/repurchase_result"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="30dp">
+
+            <TextView
+                android:id="@+id/label_repurchase_gain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="@string/gain"
+                android:layout_marginEnd="10dp"
+                />
+
+            <TextView
+                android:id="@+id/repurchase_gain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:ems="10"
+                android:textSize="18dp"
+                android:layout_toEndOf="@id/label_repurchase_gain"
+                android:background="@drawable/border"
+                />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/label_loan_cost"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:gravity="center_horizontal"
+            android:autoSizeTextType="uniform"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/group_repurchase_gain"
+            android:text="@string/credit_cost"
+            />
+
+        <TextView
+            android:id="@+id/result_loan_cost"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:autoSizeTextType="uniform"
+            android:maxLines="1"
+            android:ems="15"
+            android:layout_below="@id/label_loan_cost"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/border"
+            android:layout_marginTop="10dp"
+            />
+
+        <RelativeLayout
+            android:id="@+id/group_gain_on_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/result_loan_cost"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="30dp">
+
+            <TextView
+                android:id="@+id/label_gain_on_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="@string/gain"
+                android:layout_marginEnd="10dp"
+                />
+
+            <TextView
+                android:id="@+id/result_gain_on_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:ems="10"
+                android:textSize="18dp"
+                android:layout_toEndOf="@id/label_gain_on_cost"
+                android:background="@drawable/border"
+                android:layout_marginBottom="10dp"
+                />
+        </RelativeLayout>
 
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/label_loan_cost"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:gravity="center_horizontal"
-        android:autoSizeTextType="uniform"
-        android:maxLines="1"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/group_repurchase_gain"
-        android:text="@string/credit_cost"
-        />
-
-    <TextView
-        android:id="@+id/result_loan_cost"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_centerHorizontal="true"
-        android:gravity="center_horizontal"
-        android:autoSizeTextType="uniform"
-        android:maxLines="1"
-        android:ems="15"
-        android:layout_below="@id/label_loan_cost"
-        android:layout_marginHorizontal="30dp"
-        android:background="@drawable/border"
-        android:layout_marginTop="10dp"
-        />
-
-    <RelativeLayout
-        android:id="@+id/group_gain_on_cost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/result_loan_cost"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="30dp">
-
-        <TextView
-            android:id="@+id/label_gain_on_cost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:text="@string/gain"
-            android:layout_marginEnd="10dp"
-            />
-
-        <TextView
-            android:id="@+id/result_gain_on_cost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:ems="10"
-            android:textSize="18dp"
-            android:layout_toEndOf="@id/label_gain_on_cost"
-            android:background="@drawable/border"
-            />
-    </RelativeLayout>
-
-</RelativeLayout>
+</ScrollView>
