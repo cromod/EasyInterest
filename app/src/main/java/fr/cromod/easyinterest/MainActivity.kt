@@ -1,6 +1,7 @@
 package fr.cromod.easyinterest
 
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+        setLocale(getPreference("language"), false)
         initializeFragment()
         loadFragment()
 
@@ -196,8 +198,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
-    private fun setLocale(localeName: String)
+    private fun setLocale(localeName: String, restart: Boolean = true)
     {
+        if (localeName == "") return
+
         // Set selected language
         val config = resources.configuration
         val locale = Locale(localeName)
@@ -206,7 +210,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         config.locale = locale
         resources.updateConfiguration(config, resources.displayMetrics)
 
+        // Save this locale value as a preference
+        setPreference("language", localeName)
+
         // Restart activity and reload fragment
+        if (!restart) return
         if (currentFragment != null)
         {
             currentFragment?.saveInputs()
@@ -214,5 +222,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         finish()
         startActivity(intent)
+    }
+
+    private fun getPreference(key: String): String
+    {
+        val sharedPreference = getSharedPreferences("shared_preferences", Context.MODE_PRIVATE)
+        return sharedPreference.getString(key, "") ?: ""
+    }
+
+    private fun setPreference(key: String, value: String)
+    {
+        val sharedPreference = getSharedPreferences("shared_preferences", Context.MODE_PRIVATE)
+        val editor = sharedPreference.edit()
+        editor.putString(key, value).commit()
     }
 }
