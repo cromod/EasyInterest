@@ -44,6 +44,12 @@ abstract class AbstractFragment : Fragment() {
         retainInstance = true
     }
 
+    override fun onPause()
+    {
+        super.onPause()
+        saveInputs()
+    }
+
     override fun onAttach(context: Context)
     {
         super.onAttach(context)
