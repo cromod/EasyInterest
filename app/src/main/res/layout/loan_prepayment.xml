@@ -144,13 +144,14 @@
 
         <TextView
             android:id="@+id/prepayment_result"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_centerHorizontal="true"
             android:gravity="center_horizontal"
             android:autoSizeTextType="uniform"
             android:maxLines="1"
             android:ems="15"
+            android:textSize="20dp"
             android:layout_below="@id/switch_result"
             android:background="@drawable/border"
             android:layout_marginTop="10dp"
@@ -203,13 +204,14 @@
 
         <TextView
             android:id="@+id/result_loan_cost"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_centerHorizontal="true"
             android:gravity="center_horizontal"
             android:autoSizeTextType="uniform"
             android:maxLines="1"
             android:ems="15"
+            android:textSize="20dp"
             android:layout_below="@id/label_loan_cost"
             android:background="@drawable/border"
             android:layout_marginTop="10dp"
