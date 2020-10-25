@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="start_capital">初始本金</string>
+    <string name="savings">储蓄</string>
+    <string name="monthly">每月</string>
+    <string name="yearly">每年</string>
+    <string name="annual_growth">年利率</string>
+    <string name="nb_of_years">年数</string>
+    <string name="final_capital">最终资金</string>
+    <string name="navigation_drawer_open">打开导航栏</string>
+    <string name="navigation_drawer_close">关闭导航栏</string>
+    <string name="interest_rate">利息税率</string>
+    <string name="loan_amount">贷款金额</string>
+    <string name="compound_interest">复利</string>
+    <string name="monthly_payment">每月付款金额</string>
+    <string name="credit_cost">贷款成本</string>
+    <string name="new_monthly_payment">新的每月付款金额</string>
+    <string name="property_loan">房地产贷款</string>
+    <string name="loan_prepayment">提前还贷</string>
+    <string name="loan_repurchase">贷款回购</string>
+    <string name="remaining_capital">剩余本金</string>
+    <string name="remaining_months_before_prepayment">剩余月份数</string>
+    <string name="remaining_months_after_prepayment">新的剩余月份数</string>
+    <string name="remaining_months_before_repurchase">剩余月份数</string>
+    <string name="remaining_months_after_repurchase">新的剩余月份数</string>
+    <string name="prepayment_amount">偿还金额</string>
+    <string name="gain">盈利</string>
+    <string name="initial_interest_rate">初始利率</string>
+    <string name="new_interest_rate">新的利率</string>
+    <string name="save">保存</string>
+    <string name="history">历史记录</string>
+    <string name="languages">语言</string>
+    <string name="share">分享应用</string>
+    <string name="rate_app">评价应用</string>
+    <string name="email_us">联系我们</string>
+    <string name="share_to">分享</string>
+    <string name="mail_to">发送邮件</string>
+    <string name="choose_language">选择语言</string>
+    <string name="support">媒介</string>
+    <string name="share_this_app">尝试使用Easy Interest金融计算器\nhttp://play.google.com/store/apps/details?id=fr.cromod.easyinterest</string>
+</resources>

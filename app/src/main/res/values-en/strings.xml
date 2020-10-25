@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Easy Interest</string>
     <string name="start_capital">Start catpital</string>
     <string name="savings">Savings</string>
     <string name="monthly">Monthly</string>
@@ -37,9 +36,6 @@
     <string name="email_us">Contact us</string>
     <string name="share_this_app">Try the financial calculator Easy Interest:\nhttp://play.google.com/store/apps/details?id=fr.cromod.easyinterest</string>
     <string name="share_to">Share to</string>
-    <string name="app_email">app.cromod@gmail.com</string>
     <string name="mail_to">Send an email to</string>
-    <string name="french">Français</string>
-    <string name="english">English</string>
     <string name="choose_language">Select a language:</string>
 </resources>

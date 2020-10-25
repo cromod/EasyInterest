@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Easy Interest</string>
+    <string name="app_name" translatable="false">Easy Interest</string>
     <string name="start_capital">Capital initial</string>
     <string name="savings">Epargne</string>
     <string name="monthly">Mensuelle</string>
@@ -36,9 +36,10 @@
     <string name="email_us">Nous contacter</string>
     <string name="share_this_app">Essayez la calculatrice financière Easy Interest :\nhttp://play.google.com/store/apps/details?id=fr.cromod.easyinterest</string>
     <string name="share_to">Partager avec</string>
-    <string name="app_email">app.cromod@gmail.com</string>
+    <string name="app_email" translatable="false">app.cromod@gmail.com</string>
     <string name="mail_to">Envoyer un mail à</string>
-    <string name="french">Français</string>
-    <string name="english">English</string>
+    <string name="french" translatable="false">Français</string>
+    <string name="english" translatable="false">English</string>
+    <string name="chinese" translatable="false">中文</string>
     <string name="choose_language">Choisissez une langue:</string>
 </resources>

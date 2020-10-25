@@ -187,12 +187,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun chooseLanguage()
     {
-        val languages = listOf(getString(R.string.french), getString(R.string.english))
+        val languages = listOf(
+            getString(R.string.english),
+            getString(R.string.french),
+            getString(R.string.chinese)
+        )
         selector(getString(R.string.choose_language), languages) { _, i ->
             when(languages[i])
             {
                 getString(R.string.french) -> setLocale("fr")
                 getString(R.string.english) -> setLocale("en")
+                getString(R.string.chinese) -> setLocale("zh")
             }
         }
 
