@@ -1,9 +1,11 @@
-package fr.cromod.easyinterest
+package fr.cromod.easyinterest.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import fr.cromod.easyinterest.utils.Calculator
+import fr.cromod.easyinterest.R
 import kotlinx.android.synthetic.main.loan_prepayment.*
 
 class LoanPrepaymentFragment() : AbstractFragment() {
@@ -26,7 +28,8 @@ class LoanPrepaymentFragment() : AbstractFragment() {
 
         fun newInstance(): AbstractFragment?
         {
-            if (instance == null) instance = LoanPrepaymentFragment()
+            if (instance == null) instance =
+                LoanPrepaymentFragment()
             return instance
         }
     }
@@ -78,14 +81,18 @@ class LoanPrepaymentFragment() : AbstractFragment() {
     {
         initialRemainingDuration = if(edit_remaining_duration.text.isEmpty()) 0F else edit_remaining_duration.text.toString().toFloat()
 
-        initialMonthlyPayment = Calculator.monthlyPayment(
-            loanAmount = if(edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString().toFloat(),
-            interestRate = if(edit_interest_rate.text.isEmpty()) 0F else edit_interest_rate.text.toString().toFloat(),
-            nbOfMonths = initialRemainingDuration
-        )
+        initialMonthlyPayment =
+            Calculator.monthlyPayment(
+                loanAmount = if (edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString()
+                    .toFloat(),
+                interestRate = if (edit_interest_rate.text.isEmpty()) 0F else edit_interest_rate.text.toString()
+                    .toFloat(),
+                nbOfMonths = initialRemainingDuration
+            )
 
         initialLoanCost = Calculator.loanCost(
-            loanAmount = if(edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString().toFloat(),
+            loanAmount = if (edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString()
+                .toFloat(),
             monthlyPayment = initialMonthlyPayment,
             nbOfMonths = initialRemainingDuration
         )
@@ -96,39 +103,48 @@ class LoanPrepaymentFragment() : AbstractFragment() {
     private fun updateDuration(initialMonthlyPayment: Float, initialRemainingDuration: Float, initialLoanCost: Float, prepayment: Float)
     {
         result = Calculator.loanDuration(
-            loanAmount = if(edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString().toFloat(),
-            interestRate = if(edit_interest_rate.text.isEmpty()) 0F else edit_interest_rate.text.toString().toFloat(),
+            loanAmount = if (edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString()
+                .toFloat(),
+            interestRate = if (edit_interest_rate.text.isEmpty()) 0F else edit_interest_rate.text.toString()
+                .toFloat(),
             monthlyPayment = initialMonthlyPayment,
             prepayment = prepayment
         )
         gain = initialRemainingDuration - result
 
         loanCost = Calculator.loanCost(
-            loanAmount = if(edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString().toFloat(),
+            loanAmount = if (edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString()
+                .toFloat(),
             monthlyPayment = initialMonthlyPayment,
             nbOfMonths = result,
             prepayment = prepayment
         )
         gainOnCost = initialLoanCost - loanCost
 
-        result = Calculator.roundFloat(result, 0)
+        result =
+            Calculator.roundFloat(result, 0)
         gain = Calculator.roundFloat(gain, 0)
-        loanCost = Calculator.roundFloat(loanCost)
-        gainOnCost = Calculator.roundFloat(gainOnCost)
+        loanCost =
+            Calculator.roundFloat(loanCost)
+        gainOnCost =
+            Calculator.roundFloat(gainOnCost)
     }
 
     private fun updateMonthlyPayment(initialMonthlyPayment: Float, initialRemainingDuration: Float,  initialLoanCost: Float, prepayment: Float)
     {
         result = Calculator.monthlyPayment(
-            loanAmount = if(edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString().toFloat(),
-            interestRate = if(edit_interest_rate.text.isEmpty()) 0F else edit_interest_rate.text.toString().toFloat(),
+            loanAmount = if (edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString()
+                .toFloat(),
+            interestRate = if (edit_interest_rate.text.isEmpty()) 0F else edit_interest_rate.text.toString()
+                .toFloat(),
             nbOfMonths = initialRemainingDuration,
             prepayment = prepayment
         )
         gain = initialMonthlyPayment - result
 
         loanCost = Calculator.loanCost(
-            loanAmount = if(edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString().toFloat(),
+            loanAmount = if (edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString()
+                .toFloat(),
             monthlyPayment = result,
             nbOfMonths = initialRemainingDuration,
             prepayment = prepayment
@@ -137,8 +153,10 @@ class LoanPrepaymentFragment() : AbstractFragment() {
 
         result = Calculator.roundFloat(result)
         gain = Calculator.roundFloat(gain)
-        loanCost = Calculator.roundFloat(loanCost)
-        gainOnCost = Calculator.roundFloat(gainOnCost)
+        loanCost =
+            Calculator.roundFloat(loanCost)
+        gainOnCost =
+            Calculator.roundFloat(gainOnCost)
     }
 
     private fun displayResult()

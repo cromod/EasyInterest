@@ -1,4 +1,4 @@
-package fr.cromod.easyinterest
+package fr.cromod.easyinterest.utils
 
 import kotlin.math.ln
 import kotlin.math.pow

@@ -1,9 +1,11 @@
-package fr.cromod.easyinterest
+package fr.cromod.easyinterest.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import fr.cromod.easyinterest.utils.Calculator
+import fr.cromod.easyinterest.R
 import kotlinx.android.synthetic.main.property_loan.*
 
 class PropertyLoanFragment() : AbstractFragment() {
@@ -14,7 +16,8 @@ class PropertyLoanFragment() : AbstractFragment() {
 
         fun newInstance(): AbstractFragment?
         {
-            if (instance == null) instance = PropertyLoanFragment()
+            if (instance == null) instance =
+                PropertyLoanFragment()
             return instance
         }
     }
@@ -37,20 +40,28 @@ class PropertyLoanFragment() : AbstractFragment() {
 
     override fun updateResult()
     {
-        var monthlyPayment = Calculator.monthlyPayment(
-            loanAmount = if(edit_loan_amount.text.isEmpty()) 0F else edit_loan_amount.text.toString().toFloat(),
-            interestRate = if(edit_interest_rate.text.isEmpty()) 0F else edit_interest_rate.text.toString().toFloat(),
-            nbOfMonths = if(edit_loan_duration.text.isEmpty()) 0F else edit_loan_duration.text.toString().toFloat() * 12
-        )
+        var monthlyPayment =
+            Calculator.monthlyPayment(
+                loanAmount = if (edit_loan_amount.text.isEmpty()) 0F else edit_loan_amount.text.toString()
+                    .toFloat(),
+                interestRate = if (edit_interest_rate.text.isEmpty()) 0F else edit_interest_rate.text.toString()
+                    .toFloat(),
+                nbOfMonths = if (edit_loan_duration.text.isEmpty()) 0F else edit_loan_duration.text.toString()
+                    .toFloat() * 12
+            )
 
         var loanCost = Calculator.loanCost(
-            loanAmount = if(edit_loan_amount.text.isEmpty()) 0F else edit_loan_amount.text.toString().toFloat(),
+            loanAmount = if (edit_loan_amount.text.isEmpty()) 0F else edit_loan_amount.text.toString()
+                .toFloat(),
             monthlyPayment = monthlyPayment,
-            nbOfMonths = if(edit_loan_duration.text.isEmpty()) 0F else edit_loan_duration.text.toString().toFloat() * 12
+            nbOfMonths = if (edit_loan_duration.text.isEmpty()) 0F else edit_loan_duration.text.toString()
+                .toFloat() * 12
         )
 
-        monthlyPayment = Calculator.roundFloat(monthlyPayment)
-        loanCost = Calculator.roundFloat(loanCost)
+        monthlyPayment =
+            Calculator.roundFloat(monthlyPayment)
+        loanCost =
+            Calculator.roundFloat(loanCost)
 
         result_monthly_payment.text = if (monthlyPayment.isFinite()) {
             beautifyNumber(monthlyPayment.toBigDecimal().toPlainString())

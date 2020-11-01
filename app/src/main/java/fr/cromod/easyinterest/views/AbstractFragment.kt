@@ -1,4 +1,4 @@
-package fr.cromod.easyinterest
+package fr.cromod.easyinterest.views
 
 import android.app.Activity
 import android.content.Context

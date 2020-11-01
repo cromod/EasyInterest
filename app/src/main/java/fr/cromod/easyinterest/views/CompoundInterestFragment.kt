@@ -1,9 +1,11 @@
-package fr.cromod.easyinterest
+package fr.cromod.easyinterest.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import fr.cromod.easyinterest.utils.Calculator
+import fr.cromod.easyinterest.R
 import kotlinx.android.synthetic.main.compound_interest.*
 
 class CompoundInterestFragment() : AbstractFragment() {
@@ -14,7 +16,8 @@ class CompoundInterestFragment() : AbstractFragment() {
 
         fun newInstance(): AbstractFragment?
         {
-            if (instance == null) instance = CompoundInterestFragment()
+            if (instance == null) instance =
+                CompoundInterestFragment()
             return instance
         }
     }
@@ -49,10 +52,14 @@ class CompoundInterestFragment() : AbstractFragment() {
     override fun updateResult()
     {
         var result = Calculator.finalCapital(
-            startCapital = if(edit_start_capital.text.isEmpty()) 0F else edit_start_capital.text.toString().toFloat(),
-            growth = if(edit_annual_growth.text.isEmpty()) 0F else edit_annual_growth.text.toString().toFloat(),
-            nbOfYears = if(edit_nb_of_years.text.isEmpty()) 0 else edit_nb_of_years.text.toString().toInt(),
-            savings = if(edit_savings.text.isEmpty()) 0F else edit_savings.text.toString().toFloat(),
+            startCapital = if (edit_start_capital.text.isEmpty()) 0F else edit_start_capital.text.toString()
+                .toFloat(),
+            growth = if (edit_annual_growth.text.isEmpty()) 0F else edit_annual_growth.text.toString()
+                .toFloat(),
+            nbOfYears = if (edit_nb_of_years.text.isEmpty()) 0 else edit_nb_of_years.text.toString()
+                .toInt(),
+            savings = if (edit_savings.text.isEmpty()) 0F else edit_savings.text.toString()
+                .toFloat(),
             monthly = !switch_frequency.isChecked
         )
         result = Calculator.roundFloat(result)
