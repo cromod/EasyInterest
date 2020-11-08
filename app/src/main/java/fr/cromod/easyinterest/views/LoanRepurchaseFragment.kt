@@ -32,8 +32,9 @@ class LoanRepurchaseFragment() : AbstractFragment() {
 
         fun newInstance(): AbstractFragment?
         {
-            if (instance == null) instance =
-                LoanRepurchaseFragment()
+            if (instance == null) {
+                instance = LoanRepurchaseFragment()
+            }
             return instance
         }
     }

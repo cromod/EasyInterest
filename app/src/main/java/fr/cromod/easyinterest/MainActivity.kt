@@ -15,6 +15,7 @@ import fr.cromod.easyinterest.views.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import org.jetbrains.anko.displayManager
 import org.jetbrains.anko.selector
 import java.util.*
 
@@ -66,8 +67,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreateOptionsMenu(menu: Menu): Boolean
     {
         // Inflate the menu; this adds items to the action bar if it is present.
-        // TO ENABLE WHEN COMPLETELY IMPLEMENTED
-        //menuInflater.inflate(R.menu.action_menu, menu)
+        menuInflater.inflate(R.menu.action_menu, menu)
         return true
     }
 
@@ -75,8 +75,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     {
         when(item.itemId)
         {
-            R.id.action_save -> return true
-            R.id.action_history -> return true
+            R.id.action_chart -> return displayChart()
             else -> return super.onOptionsItemSelected(item)
         }
     }
@@ -142,7 +141,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (fragment == null) return
 
         currentFragment?.enabled = false
-        fragment?.enabled = true
+        fragment.enabled = true
 
         currentFragment = fragment
         currentTitle = title
@@ -152,6 +151,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             setTitle(getString(currentTitle))
             supportFragmentManager.beginTransaction().replace(fragment_to_display.id, currentFragment!!).commit()
         }
+    }
+
+    private fun displayChart() : Boolean
+    {
+        val chartFragment = ChartFragment.newInstance()
+        supportFragmentManager.beginTransaction().replace(fragment_to_display.id, chartFragment).commit()
+        return true
     }
 
     private fun shareApp()

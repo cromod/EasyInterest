@@ -16,8 +16,9 @@ class PropertyLoanFragment() : AbstractFragment() {
 
         fun newInstance(): AbstractFragment?
         {
-            if (instance == null) instance =
-                PropertyLoanFragment()
+            if (instance == null) {
+                instance = PropertyLoanFragment()
+            }
             return instance
         }
     }

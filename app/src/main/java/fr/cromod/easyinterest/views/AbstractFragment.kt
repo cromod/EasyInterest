@@ -29,7 +29,7 @@ abstract class AbstractFragment : Fragment() {
         {
             if(inputs.containsKey(editText?.id))
             {
-                editText?.setText(inputs[editText?.id])
+                editText?.setText(inputs[editText.id])
             }
             else
             {

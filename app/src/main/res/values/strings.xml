@@ -42,4 +42,5 @@
     <string name="english" translatable="false">English</string>
     <string name="chinese" translatable="false">中文</string>
     <string name="choose_language">Choisissez une langue:</string>
+    <string name="chart">graphique</string>
 </resources>

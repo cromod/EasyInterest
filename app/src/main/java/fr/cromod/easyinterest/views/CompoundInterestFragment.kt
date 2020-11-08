@@ -16,8 +16,9 @@ class CompoundInterestFragment() : AbstractFragment() {
 
         fun newInstance(): AbstractFragment?
         {
-            if (instance == null) instance =
-                CompoundInterestFragment()
+            if (instance == null) {
+                instance = CompoundInterestFragment()
+            }
             return instance
         }
     }
