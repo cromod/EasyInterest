@@ -1,7 +1,6 @@
 package fr.cromod.easyinterest
 
 import android.content.ActivityNotFoundException
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -11,11 +10,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.google.android.material.navigation.NavigationView
+import fr.cromod.easyinterest.utils.Preferences
 import fr.cromod.easyinterest.views.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import org.jetbrains.anko.displayManager
 import org.jetbrains.anko.selector
 import java.util.*
 
@@ -30,7 +29,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-        setLocale(getPreference("language"), false)
+        setLocale(Preferences(this).getString("language"), false)
         initializeFragment()
         loadFragment()
 
@@ -225,7 +224,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         resources.updateConfiguration(config, resources.displayMetrics)
 
         // Save this locale value as a preference
-        setPreference("language", localeName)
+        Preferences(this).setString("language", localeName)
 
         // Restart activity and reload fragment
         if (!restart) return
@@ -236,18 +235,5 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         finish()
         startActivity(intent)
-    }
-
-    private fun getPreference(key: String): String
-    {
-        val sharedPreference = getSharedPreferences("shared_preferences", Context.MODE_PRIVATE)
-        return sharedPreference.getString(key, "") ?: ""
-    }
-
-    private fun setPreference(key: String, value: String)
-    {
-        val sharedPreference = getSharedPreferences("shared_preferences", Context.MODE_PRIVATE)
-        val editor = sharedPreference.edit()
-        editor.putString(key, value).commit()
     }
 }

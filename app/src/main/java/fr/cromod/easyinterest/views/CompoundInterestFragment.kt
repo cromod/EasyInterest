@@ -44,8 +44,6 @@ class CompoundInterestFragment() : AbstractFragment() {
 
     private fun listenFrequencyChanged()
     {
-        if (!isVisible) return
-
         switch_frequency.setOnClickListener {
             updateResult()
             label_frequency.setText(if(switch_frequency.isChecked) R.string.yearly else R.string.monthly)
@@ -54,8 +52,6 @@ class CompoundInterestFragment() : AbstractFragment() {
 
     override fun updateResult()
     {
-        if (!isVisible) return
-
         var result = Calculator.finalCapital(
             startCapital = if (edit_start_capital.text.isEmpty()) 0F else edit_start_capital.text.toString()
                 .toFloat(),
@@ -88,8 +84,6 @@ class CompoundInterestFragment() : AbstractFragment() {
 
     override fun restoreInputs()
     {
-        if (!isVisible) return
-
         setEditTextFromInputs(edit_start_capital, inputs)
         setEditTextFromInputs(edit_annual_growth, inputs)
         setEditTextFromInputs(edit_nb_of_years, inputs)

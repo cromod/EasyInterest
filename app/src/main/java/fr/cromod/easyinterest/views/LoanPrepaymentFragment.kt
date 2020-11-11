@@ -56,8 +56,6 @@ class LoanPrepaymentFragment() : AbstractFragment() {
 
     private fun listenResultTypeChanged()
     {
-        if (!isVisible) return
-
         switch_result.setOnClickListener {
             updateResult()
             label_prepayment_result.setText(if(switch_result.isChecked) R.string.remaining_months_after_prepayment else R.string.new_monthly_payment)
@@ -66,8 +64,6 @@ class LoanPrepaymentFragment() : AbstractFragment() {
 
     override fun updateResult()
     {
-        if (!isVisible) return
-
         initializeUpdating()
 
         if (switch_result.isChecked)
@@ -84,8 +80,6 @@ class LoanPrepaymentFragment() : AbstractFragment() {
 
     private fun initializeUpdating()
     {
-        if (!isVisible) return
-
         initialRemainingDuration = if(edit_remaining_duration.text.isEmpty()) 0F else edit_remaining_duration.text.toString().toFloat()
 
         initialMonthlyPayment =
@@ -139,8 +133,6 @@ class LoanPrepaymentFragment() : AbstractFragment() {
 
     private fun updateMonthlyPayment(initialMonthlyPayment: Float, initialRemainingDuration: Float,  initialLoanCost: Float, prepayment: Float)
     {
-        if (!isVisible) return
-
         result = Calculator.monthlyPayment(
             loanAmount = if (edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString()
                 .toFloat(),
@@ -170,8 +162,6 @@ class LoanPrepaymentFragment() : AbstractFragment() {
 
     private fun displayResult()
     {
-        if (!isVisible) return
-
         prepayment_result.text = if (result.isFinite()) {
             beautifyNumber(result.toBigDecimal().toPlainString())
         } else ""
@@ -203,8 +193,6 @@ class LoanPrepaymentFragment() : AbstractFragment() {
 
     override fun restoreInputs()
     {
-        if (!isVisible) return
-
         setEditTextFromInputs(edit_remaining_capital, inputs)
         setEditTextFromInputs(edit_remaining_duration, inputs)
         setEditTextFromInputs(edit_interest_rate, inputs)
