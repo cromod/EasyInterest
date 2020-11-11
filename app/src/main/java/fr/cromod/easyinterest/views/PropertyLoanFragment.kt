@@ -41,6 +41,8 @@ class PropertyLoanFragment() : AbstractFragment() {
 
     override fun updateResult()
     {
+        if (!isVisible) return
+
         var monthlyPayment =
             Calculator.monthlyPayment(
                 loanAmount = if (edit_loan_amount.text.isEmpty()) 0F else edit_loan_amount.text.toString()
@@ -75,6 +77,8 @@ class PropertyLoanFragment() : AbstractFragment() {
 
     override fun saveInputs()
     {
+        if (!isVisible) return
+
         inputs = mapOf(edit_loan_amount.id to edit_loan_amount.text.toString(),
             edit_interest_rate.id to edit_interest_rate.text.toString(),
             edit_loan_duration.id to edit_loan_duration.text.toString()
@@ -83,6 +87,8 @@ class PropertyLoanFragment() : AbstractFragment() {
 
     override fun restoreInputs()
     {
+        if (!isVisible) return
+
         setEditTextFromInputs(edit_loan_amount, inputs)
         setEditTextFromInputs(edit_interest_rate, inputs)
         setEditTextFromInputs(edit_loan_duration, inputs)

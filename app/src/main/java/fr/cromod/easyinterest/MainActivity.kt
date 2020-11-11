@@ -73,6 +73,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean
     {
+        currentFragment?.saveInputs()
+
         when(item.itemId)
         {
             R.id.action_chart -> return displayChart()
@@ -83,7 +85,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean
     {
         currentFragment?.saveInputs()
-        
+
         when(item.itemId)
         {
             R.id.nav_compound_interest -> loadFragment(

@@ -60,6 +60,8 @@ class LoanRepurchaseFragment() : AbstractFragment() {
 
     private fun listenResultTypeChanged()
     {
+        if (!isVisible) return
+
         switch_result.setOnClickListener {
             updateResult()
             label_repurchase_result.setText(if(switch_result.isChecked) R.string.remaining_months_after_repurchase else R.string.new_monthly_payment)
@@ -68,6 +70,8 @@ class LoanRepurchaseFragment() : AbstractFragment() {
 
     override fun updateResult()
     {
+        if (!isVisible) return
+
         initializeUpdating()
 
         if (switch_result.isChecked)
@@ -84,6 +88,8 @@ class LoanRepurchaseFragment() : AbstractFragment() {
 
     private fun initializeUpdating()
     {
+        if (!isVisible) return
+
         initialRemainingDuration = if(edit_remaining_duration.text.isEmpty()) 0F else edit_remaining_duration.text.toString().toFloat()
 
         initialMonthlyPayment =
@@ -105,6 +111,8 @@ class LoanRepurchaseFragment() : AbstractFragment() {
 
     private fun updateDuration(initialMonthlyPayment: Float, initialRemainingDuration: Float, initialLoanCost: Float)
     {
+        if (!isVisible) return
+
         result = Calculator.loanDuration(
             loanAmount = if (edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString()
                 .toFloat(),
@@ -133,6 +141,8 @@ class LoanRepurchaseFragment() : AbstractFragment() {
 
     private fun updateMonthlyPayment(initialMonthlyPayment: Float, initialRemainingDuration: Float,  initialLoanCost: Float)
     {
+        if (!isVisible) return
+
         result = Calculator.monthlyPayment(
             loanAmount = if (edit_remaining_capital.text.isEmpty()) 0F else edit_remaining_capital.text.toString()
                 .toFloat(),
@@ -160,6 +170,8 @@ class LoanRepurchaseFragment() : AbstractFragment() {
 
     private fun displayResult()
     {
+        if (!isVisible) return
+
         repurchase_result.text = if (result.isFinite()) {
             beautifyNumber(result.toBigDecimal().toPlainString())
         } else ""
@@ -179,6 +191,8 @@ class LoanRepurchaseFragment() : AbstractFragment() {
 
     override fun saveInputs()
     {
+        if (!isVisible) return
+
         inputs = mapOf(edit_remaining_capital.id to edit_remaining_capital.text.toString(),
             edit_remaining_duration.id to edit_remaining_duration.text.toString(),
             edit_initial_interest_rate.id to edit_initial_interest_rate.text.toString(),
@@ -189,6 +203,8 @@ class LoanRepurchaseFragment() : AbstractFragment() {
 
     override fun restoreInputs()
     {
+        if (!isVisible) return
+
         setEditTextFromInputs(edit_remaining_capital, inputs)
         setEditTextFromInputs(edit_remaining_duration, inputs)
         setEditTextFromInputs(edit_initial_interest_rate, inputs)
