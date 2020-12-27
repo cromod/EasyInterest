@@ -4,6 +4,8 @@ import kotlin.math.ln
 import kotlin.math.pow
 import kotlin.math.round
 
+class Point(var x: Int = 0, var y: Float = 0F)
+
 abstract class Calculator {
 
     companion object
@@ -46,6 +48,26 @@ abstract class Calculator {
         fun loanCost(loanAmount: Float, monthlyPayment: Float, nbOfMonths: Float, prepayment: Float = 0F): Float
         {
             return monthlyPayment * nbOfMonths - loanAmount + prepayment
+        }
+
+        fun capitalTable( startCapital: Float, growth: Float, nbOfYears: Int,
+                          savings: Float, monthly: Boolean): List<Point>
+
+        {
+            // Create list of points and add the start capital
+            val capitalValues = mutableListOf<Point>()
+            val point = Point(0, startCapital)
+            capitalValues.add(point)
+
+            // Add the capital values for every year
+            for (i in 1..nbOfYears) {
+                point.x = i
+                // TODO very inefficient => to fix if necessary
+                point.y = finalCapital(startCapital, growth, nbOfYears, savings, monthly)
+                capitalValues.add(point)
+            }
+
+            return capitalValues
         }
     }
 }
